@@ -1,0 +1,23 @@
+.opcion{
+  padding: 20px;
+  background-color:#f1f1f1;
+  width: 100%;
+  text-align: center;
+}
+.formInicio{
+  width: 60%;
+  margin: 10% auto auto auto;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.formContent{
+  margin: 10% auto auto auto;
+  width: 80%;
+}
+img.avatar{
+    width: 40%;
+    border-radius: 50%;
+}
+.imgcontainer{
+    text-align: center;
+}
