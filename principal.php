@@ -35,9 +35,8 @@
               include_once("funciones/menu1.html");
             if($_SESSION['tipo_usuario']==2)
               include_once("funciones/menu2.html");
-            else {
+            if($_SESSION['tipo_usuario']==3)
               include_once("funciones/menu3.html");
-            }
           ?>
         </div>
         <div class="col 9">

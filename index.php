@@ -31,7 +31,7 @@
             <div class="input-field" style="margin-bottom: 25px;">
               <i class="fas fa-user prefix"></i>
               <input class="validate" type="text" name="nombreU" required>
-              <label for="nombreU">Ingresa tu nombre de usuario</label>
+              <label for="nombreU">Ingresa tu nombre de usuario o correo electrónico</label>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <i class="fas fa-lock prefix"></i>
