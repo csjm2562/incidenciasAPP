@@ -1,10 +1,11 @@
 .opcion{
   padding: 20px;
-  background-color:#f1f1f1;
+  background-color:#f0f0f0;
   width: 100%;
   text-align: center;
 }
 .formInicio{
+  background-color: #ffffff;
   width: 60%;
   margin: 10% auto auto auto;
   border: 1px solid #ccc;
@@ -56,4 +57,19 @@ ul.acorc li li:last-child a {
 ul.acorh li:hover ul {
   max-height: 300px;
   transition: .3s all ease-in;
+}
+
+body {
+  background-color: #eeeeee;
+}
+
+.principal {
+  background-color: #ffffff;
+  height: 720px;
+  margin: auto;
+  width: 90%;
+}
+.copyright{
+  position: absolute;
+  bottom: 19%;
 }
