@@ -8,7 +8,7 @@
 		$claveU = $mysqli->real_escape_string($_POST['claveU']);
 		$conClaveU = $mysqli->real_escape_string($_POST['conClaveU']);
 		$correoU = $mysqli->real_escape_string($_POST['correoU']);
-		$activo = 1;
+		$activo = 1; //MODIFICAR
 		$tipoU = 3;
 		if(!validaPassword($claveU, $conClaveU)){
       $flag = true;
@@ -22,8 +22,14 @@
       $pass_hash = hashPassword($claveU);
       $token = generateToken();
       $registro = registraUsuario($nombreU, $pass_hash, $nombre, $correoU, $activo, $token, $tipoU);
-      header("Location: index.php");
-      echo '<script language="javascript">alert("Usuario creado exitosamente");</script>'; 
+      echo "<div class='modal'>
+              <div class='modal-content'>
+                <p>Usuario creado exitosamente</p>
+              </div>
+              <div class='modal-footer'>
+                <a href='index.php' class='modal-close waves-effect waves-green btn-flat'>Aceptar</a>
+              </div>
+            </div>";
     }
 	}
 ?>
@@ -41,7 +47,7 @@
         <form role="form" action="<?php $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
           <div class="formContent">
             <div class="imgcontainer">
-              <img src="img/img_logo2.png" alt="avatar" class="avatar">
+              <img src="media/img_logo2.png" alt="avatar" class="avatar">
   					</div>
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="text" name="nombre" required pattern="[A-Za-z ]+">
@@ -80,6 +86,8 @@
         </form>
       </div>
     </div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<script src="js/scripts.js"></script>
   </body>
 </html>

@@ -1,23 +1,5 @@
 <?php
 
-	function isNull($nombre, $user, $pass, $pass_con, $email){
-		if(strlen(trim($nombre)) < 1 || strlen(trim($user)) < 1 || strlen(trim($pass)) < 1 || strlen(trim($pass_con)) < 1 || strlen(trim($email)) < 1)
-		{
-			return true;
-			} else {
-			return false;
-		}
-	}
-
-	function isEmail($email)
-	{
-		if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-			return true;
-			} else {
-			return false;
-		}
-	}
-
 	function validaPassword($var1, $var2)
 	{
 		if (strcmp($var1, $var2) !== 0){
@@ -93,15 +75,12 @@
 	function resultBlock($errors){
 		if(count($errors) > 0)
 		{
-			echo "<div id='error' class='alert alert-danger' role='alert'>
-			<a href='#' onclick=\"showHide('error');\">[X]</a>
-			<ul>";
+			echo "<div class='modal'><div class='modal-content'><h4>Error</h4>";
 			foreach($errors as $error)
-			{
-				echo "<li>".$error."</li>";
-			}
+			{ echo "<li>".$error."</li>";	}
 			echo "</ul>";
 			echo "</div>";
+			echo "</div></div>";
 		}
 	}
 
@@ -224,13 +203,13 @@
 					header("location: principal.php");
 					} else {
 
-					$errors = "La contrase&ntilde;a es incorrecta";
+					$errors = "La contraseña es incorrecta";
 				}
 				} else {
 				$errors = 'El usuario no esta activo';
 			}
 			} else {
-			$errors = "El nombre de usuario o correo electr&oacute;nico no existe";
+			$errors = "El nombre de usuario o correo electrónico no existe";
 		}
 		return $errors;
 	}

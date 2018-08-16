@@ -44,7 +44,7 @@
         <form role="form" action="<?php $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
           <div class="formContent">
             <div class="imgcontainer">
-              <img src="img/img_logo2.png" alt="avatar" class="avatar">
+              <img src="media/img_logo2.png" alt="avatar" class="avatar">
   					</div>
             <div class="input-field" style="margin-bottom: 25px;">
               <i class="fas fa-envelope prefix"></i>

@@ -24,7 +24,7 @@
         <div class="nav-wrapper teal">
           <a href="principal.php" class="brand-logo">Logo</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="cierra.php">Cerrar sesión</a></li>
+            <li><a href="cierra.php" title="Cerrar sesión"><i class="fas fa-power-off"></i></a></li>
           </ul>
         </div>
       </nav>
@@ -39,12 +39,13 @@
               include_once("funciones/menu3.html");
           ?>
         </div>
-        <div class="col 9">
-          <p class="right"><?php echo 'Bienvenido(a) '.utf8_decode($row['nombre']); ?></p>
+        <div class="col s9">
+          <p><?php echo 'Bienvenido(a) '.utf8_decode($row['nombre']); ?></p>
+          <div class="container" id="contenido"></div>
         </div>
       </div>
-      <p class="copyright">Copyright © Johan Solano. Todos los derechos reservados.</p>
     </div>
+    <p style="background-color:#ffffff;margin:auto;width:90%;">Copyright © Johan Solano. Todos los derechos reservados.</p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   </body>
 </html>

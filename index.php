@@ -26,12 +26,12 @@
         <form id="loginform" role="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" autocomplete="off">
           <div class="formContent">
             <div class="imgcontainer">
-              <img src="img/img_avatar2.png" alt="avatar" class="avatar">
+              <img src="media/img_avatar2.png" alt="avatar" class="avatar">
   					</div>
             <div class="input-field" style="margin-bottom: 25px;">
               <i class="fas fa-user prefix"></i>
               <input class="validate" type="text" name="nombreU" required>
-              <label for="nombreU">Ingresa tu nombre de usuario o correo electrónico</label>
+              <label for="nombreU">Ingresa tu nombre de usuario</label>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <i class="fas fa-lock prefix"></i>
@@ -54,6 +54,8 @@
         <?php echo resultBlock($errors); ?>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+	<script src="js/scripts.js"></script>
   </body>
 </html>
