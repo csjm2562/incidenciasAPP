@@ -47,5 +47,10 @@
     </div>
     <p style="background-color:#ffffff;margin:auto;width:90%;">Copyright © Johan Solano. Todos los derechos reservados.</p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+      });
+    </script>
   </body>
 </html>
