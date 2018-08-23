@@ -1,7 +1,3 @@
-$(document).ready(function(){
-  $('.collapsible').collapsible();
-});
-
 $(document).ready(function() {
   $('.altEmpCli').on('click', function() {
       $('.navega li').removeClass('active');
@@ -20,7 +16,7 @@ $(document).ready(function() {
   });
   $('.asiInc').on('click', function() {
       $('.navega li').removeClass('active');
-      $("#contenido").load('funciones/inc/asignarmeIncidencia.php');
+      $("#contenido").load('funciones/inc/asignarmeIncidencia/asignarmeIncidencia.php');
         return false;
   });
   $('.bajEmpCli').on('click', function() {
@@ -40,17 +36,17 @@ $(document).ready(function() {
   });
   $('.incAsiMi').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/incidenciasAsignadasMi.php');
+    $("#contenido").load('funciones/inc/incidenciasAsignadasMi/incidenciasAsignadasMi.php');
       return false;
   });
   $('.incSinAsi').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/incidenciasSinAsignar.php');
+    $("#contenido").load('funciones/inc/incidenciasSinAsignar/incidenciasSinAsignar.php');
       return false;
   });
   $('.misInc').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/miIncidencias.php');
+    $("#contenido").load('funciones/inc/misIncidencias.php');
       return false;
   });
   $('.modInc').on('click', function() {
@@ -60,7 +56,7 @@ $(document).ready(function() {
   });
   $('.modEmpCli').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/modificarEmpleadoCliente.php');
+    $("#contenido").load('funciones/inc/modificarEmpleadoCliente/modificarEmpleadoCliente.php');
       return false;
   });
   $('.reabrirInc').on('click', function() {
@@ -70,17 +66,12 @@ $(document).ready(function() {
   });
   $('.reasignarInc').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/reasignarIncidencia.php');
+    $("#contenido").load('funciones/inc/reasignarIncidencia/reasignarIncidencia.php');
       return false;
   });
   $('.reportes').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/reportes.php');
+    $("#contenido").load('funciones/inc/reporte/reportes.php');
       return false;
   });
-});
-
-$(document).ready(function(){
-  $('.modal').modal();
-  $('.modal').modal('open');
 });
