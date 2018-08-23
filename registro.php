@@ -9,7 +9,7 @@
 		$conClaveU = $mysqli->real_escape_string($_POST['conClaveU']);
 		$correoU = $mysqli->real_escape_string($_POST['correoU']);
 		$activo = 1; //MODIFICAR
-		$tipoU = 3;
+		$tipoU = 3; //MODIFICAR; 1-Administrador, 2-Empleado, 3-Cliente
 		if(!validaPassword($claveU, $conClaveU)){
       $flag = true;
 			$cpassword_error = "Las contraseñas no coinciden.";
@@ -57,7 +57,7 @@
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="text" name="nombreU" required>
               <label for="nombreU">Ingrese nombre de usuario</label>
-              <span class="helper-text"><?php if (isset($cusuario_error)) echo $cusuario_error; ?></span>
+              <span class="helper-text red-text"><?php if (isset($cusuario_error)) echo $cusuario_error; ?></span>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="password" name="claveU" minlength="6" required>
@@ -67,7 +67,7 @@
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="password" name="conClaveU" required>
               <label for="conClaveU">Vuelva a ingresar su contraseña</label>
-              <span class="helper-text"><?php if (isset($cpassword_error)) echo $cpassword_error; ?></span>
+              <span class="helper-text red-text"><?php if (isset($cpassword_error)) echo $cpassword_error; ?></span>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="email" name="correoU" required>
@@ -86,8 +86,6 @@
         </form>
       </div>
     </div>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-	<script src="js/scripts.js"></script>
   </body>
 </html>
