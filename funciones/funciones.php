@@ -74,12 +74,12 @@
 		$mail = new PHPMailer();
 		$mail->isSMTP();
 		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = 'tls'; //Modificar
-		$mail->Host = 'smtp.gmail.com'; //Modificar
-		$mail->Port = 587; //Modificar
-		$mail->Username = 'johansolano94@gmail.com'; //Modificar
-		$mail->Password = 'csjm-1994'; //Modificar
-		$mail->setFrom('johansolano94@gmail.com', 'Recuperar contraseña'); //Modificar
+		$mail->SMTPSecure = ' '; //Modificar
+		$mail->Host = ' '; //Modificar
+		$mail->Port = 0; //Modificar
+		$mail->Username = ' '; //Modificar
+		$mail->Password = ' '; //Modificar
+		$mail->setFrom('correo', 'asunto'); //Modificar
 		$mail->addAddress($email, $nombre);
 		$mail->Subject = $asunto;
 		$mail->Body    = $cuerpo;
