@@ -12,7 +12,14 @@
   		$fila = $resultado ->fetch_assoc();
   		$jsondata['total'] = $fila['total'];
   	}	elseif($_GET["param1"]=="dame") {
-  		$myquery = "SELECT * FROM incidencia WHERE id_empleado = 0 && id_cliente = 0 LIMIT ".$mysqli->real_escape_string($_GET['limit'])." OFFSET ".$mysqli->real_escape_string($_GET["offset"]);
+      $id = $_GET["id"];
+      $id_tipo = $_GET["id_tipo"];
+      if($id_tipo == 2 ) {
+  		  $myquery = "SELECT * FROM incidencia WHERE id_empleado = '$id' LIMIT ".$mysqli->real_escape_string($_GET['limit'])." OFFSET ".$mysqli->real_escape_string($_GET["offset"]);
+      }
+      if($id_tipo == 3 ) {
+  		  $myquery = "SELECT * FROM incidencia WHERE id_cliente = '$id' LIMIT ".$mysqli->real_escape_string($_GET['limit'])." OFFSET ".$mysqli->real_escape_string($_GET["offset"]);
+      }
   		$resultado = $mysqli->query($myquery);
   		while($fila = $resultado ->fetch_assoc())	{
   			$jsondatareport = array();
