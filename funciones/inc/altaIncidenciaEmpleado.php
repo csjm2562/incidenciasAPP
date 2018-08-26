@@ -4,7 +4,7 @@
   });
 </script>
 <form role="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-  <div class="input-field col s5">
+  <div class="input-field col s6">
     <select>
       <option value="" disabled selected>Selecciona una opción</option>
       <option value="1">Opción 1</option>
