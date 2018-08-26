@@ -1,54 +1,35 @@
-<form name="form" action="" onsubmit="enviarDatos(); return false">
+<?php
+  $con=mysqli_connect('localhost','johan','root','login') or die ('Error en la conexion');
+  session_start();
+  $idUsuario = $_SESSION['id_usuario'];
+  $sql="SELECT * FROM usuarios WHERE id = '$idUsuario'";
+  $resultado=mysqli_query($con,$sql) or die ('Error en el query database');
+  $fila = mysqli_fetch_array( $resultado );
+  mysqli_free_result( $resultado );
+  mysqli_close( $con );
+?>
+<form role="form" id="agregar_AI" name="agregar_AI" method="post">
+  <input value="<?php echo ''.$fila['id']; ?>" type="hidden" name="usuario">
   <div class="row">
-    <div class="col s6">
-      <div class="input-field">
-        <input class="validate" type="text" name="incidencia">
-        <label for="incidencia">Ingrese ID de la incidencia</label>
-      </div>
+    <div class="input-field col s6">
+      <input class="validate" type="text" name="incidencia">
+      <label for="incidencia">Ingrese ID de la incidencia</label>
     </div>
-    <div class="col s6">
-      <center>
-        <div class="row">
-          <button type="submit" name="enviar" class="btn btn-large waves-effect">Enviar</button>
-        </div>
-      </center>
-    </div>
+    <button type="submit" name="enviar" class="btn btn-large waves-effect col s6">Enviar</button>
   </div>
 </form>
-<div id="resultado"></div>
+<div id="resultados_ai"></div>
 <script>
-  function objetoAjax() {
-    var xmlhttp=false;
-    try {
-      xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    } catch (e) {
-      try {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      } catch (E) {
-        xmlhttp = false;
+  $('#agregar_AI').submit(function(event){
+    var parametros = $(this).serialize();
+    $.ajax({
+      type: "POST",
+      url: "funciones/inc/asignarmeIncidencia/conexionIncidencia.php",
+      data: parametros,
+      success: function(data) {
+        $('#resultados_ai').html(data);
       }
-    }
-    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-      xmlhttp = new XMLHttpRequest();
-	  }
-    return xmlhttp;
-  }
-  function enviarDatos() {
-    divResultado = document.getElementById('resultado');
-    id=document.nuevo.incidencia.value;
-    ajax=objetoAjax();
-    ajax.open("POST", "conexionIncidencia.php",true);
-    ajax.onreadystatechange=function() {
-    	if (ajax.readyState==4) {
-    		divResultado.innerHTML = ajax.responseText
-    		LimpiarCampos();
-  	  }
-    }
-	  ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	  ajax.send("id="+incidencia)
-  }
-  function LimpiarCampos(){
-    document.nuevo.incidencia.value="";
-    document.nuevo.incidencia.focus();
-  }
+    });
+    event.preventDefault();
+  });
 </script>
