@@ -4,9 +4,9 @@ $(document).ready(function() {
       $("#contenido").load('funciones/inc/altaEmpleadoCliente.php');
         return false;
   });
-  $('.altIncAdmCli').on('click', function() {
+  $('.altIncPetAdmCli').on('click', function() {
       $('.navega li').removeClass('active');
-      $("#contenido").load('funciones/inc/altaIncidenciaAdministradorCliente.php');
+      $("#contenido").load('funciones/inc/altaIncidenciaPeticionAdministradorCliente/altaIncidenciaPeticionAdministradorCliente.php');
         return false;
   });
   $('.altIncEmp').on('click', function() {
@@ -26,17 +26,12 @@ $(document).ready(function() {
   });
   $('.conBajPro').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/contrataBajaProducto.php');
+    $("#contenido").load('funciones/inc/contratarBajarProducto/contratarBajarProducto.php');
       return false;
   });
   $('.detInc').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/detalleIncidencia.php');
-      return false;
-  });
-  $('.incAsiMi').on('click', function() {
-    $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/incidenciasAsignadasMi/incidenciasAsignadasMi.php');
+    $("#contenido").load('funciones/inc/detalleIncidencia/detalleIncidencia.php');
       return false;
   });
   $('.incSinAsi').on('click', function() {
@@ -46,12 +41,12 @@ $(document).ready(function() {
   });
   $('.misInc').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/misIncidencias.php');
+    $("#contenido").load('funciones/inc/misIncidencias/misIncidencias.php');
       return false;
   });
   $('.modInc').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/modificarIncidencia.php');
+    $("#contenido").load('funciones/inc/modificarIncidencia/modificarIncidencia.php');
       return false;
   });
   $('.modEmpCli').on('click', function() {
@@ -61,7 +56,7 @@ $(document).ready(function() {
   });
   $('.reabrirInc').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/reabrirIncidencia.php');
+    $("#contenido").load('funciones/inc/reabrirIncidencia/reabrirIncidencia.php');
       return false;
   });
   $('.reasignarInc').on('click', function() {
