@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-08-2018 a las 08:02:35
+-- Tiempo de generación: 27-08-2018 a las 06:12:35
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -48,10 +48,29 @@ CREATE TABLE `incidencia` (
 --
 
 INSERT INTO `incidencia` (`idIncidencia`, `id_producto`, `id_cliente`, `id_empleado`, `estado_actual`, `historico_estado`, `hora_estado`, `url_video`, `hora_estado_actual`, `peticion_servicio`, `localizacion`, `comentarios`) VALUES
-(11, 11, 11, 11, 1, '1', '1', '1', '1', '1', '1', '1'),
-(5, 5, 0, 5, 5, '5', '5', '55', '5', '5', '5', '5'),
-(5, 5, 0, 0, 5, '5', '5', '55', '5', '5', '5', '5'),
-(1, 21, 2, 0, 12, '12', '12', '21', '12', '12', '12', '12');
+(11, 11, 11, 4, 1, '1', '1', '1', '1', '1', '1', 'Comentario de prueba'),
+(5, 5, 0, 4, 5, '5', '5', '55', '5', '5', '5', '5'),
+(5, 5, 0, 4, 5, '5', '5', '55', '5', '5', '5', '5'),
+(1, 21, 2, 4, 1, '12', '12', '21', '12', '12', '12', '12'),
+(1550, 0, 3, 0, 0, '', '', 'https://www.youtube.com/watch?v=0I647GU3Jsc', '', '', '', ''),
+(1550, 0, 3, 0, 0, '', '', 'https://www.youtube.com/watch?v=0I647GU3Jsc', '', '', '', ''),
+(2010, 0, 0, 0, 1, '', '', 'www.youtube.com/watch?v=0I647GU3Jsc', '', '', '', ''),
+(2018, 0, 0, 0, 1, '', '', '//www.youtube.com/watch?v=0I647GU3Jsc', '', '', '', ''),
+(12, 0, 0, 0, 1, '', '', '<button class=\"btn btn-large waves-effect col s6\">Buscar</button>', '', '', '', ''),
+(300, 0, 0, 0, 1, '', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/KfXvjxbRhZk\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>', '', '', '', ''),
+(1994, 0, 0, 3, 1, '', '', '//www.youtube.com/embed/hdYNCAFtK1Y', '', '', 'por aui esta', ''),
+(1991, 0, 0, 0, 1, '', '', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/chIfoZ-Y-2k\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>', '', '', 'por aqui esta', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto`
+--
+
+CREATE TABLE `producto` (
+  `idProducto` int(11) NOT NULL,
+  `descripcion` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -138,13 +157,19 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `password`, `nombre`, `correo`, `last_session`, `activacion`, `token`, `token_password`, `password_request`, `id_tipo`) VALUES
-(1, 'johan2562', '$2y$10$RN7j5qqxUpbmVpa1ZViRpOiNUZjNT7V5E4/53zU66Bp1zOJhrnhOi', 'Johan Solano', 'jmsolanoc@gmail.com', '2018-08-23 01:25:57', 1, '9cae5af0290e1b5b14a2875ba067c984', '', 0, 1),
-(2, 'sgerson91', '$2y$10$3Y.3q9RVoifTl4CUfv2BFeZUvbETvs86PN84eaZY0yt08RJgWmAA.', 'Gerson Solano', 'sgerson91@gmail.com', '2018-08-23 01:26:27', 1, '4ef60c04ad04b03c114f7912655ef5c6', '', 0, 2),
-(3, 'mcontreras', '$2y$10$ls.TKXDeZ6D2h64Y4u/1Fu04CLEMoPhGJJ85W5xL7vpJEm4SFdW/m', 'Micael Contreras', 'johansolano94@gmail.com', '2018-08-21 00:55:10', 1, 'ef2b05ff529bad1258575fdd52f3cf00', '', 0, 3);
+(1, 'johan2562', '$2y$10$RN7j5qqxUpbmVpa1ZViRpOiNUZjNT7V5E4/53zU66Bp1zOJhrnhOi', 'Johan Solano', 'jmsolanoc@gmail.com', '2018-08-26 23:53:40', 1, '9cae5af0290e1b5b14a2875ba067c984', '', 0, 1),
+(3, 'mcontreras', '$2y$10$ls.TKXDeZ6D2h64Y4u/1Fu04CLEMoPhGJJ85W5xL7vpJEm4SFdW/m', 'Micael Contreras', 'johansolano94@gmail.com', '2018-08-27 00:09:40', 1, 'ef2b05ff529bad1258575fdd52f3cf00', '', 0, 3),
+(4, 'sgerson91', '$2y$10$3Y.3q9RVoifTl4CUfv2BFeZUvbETvs86PN84eaZY0yt08RJgWmAA.', 'Gerson Solano', 'sgerson91@gmail.com', '2018-08-26 23:35:46', 1, '4ef60c04ad04b03c114f7912655ef5c6', '', 0, 2);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`idProducto`);
 
 --
 -- Indices de la tabla `tipo_usuario`
@@ -163,6 +188,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
@@ -172,7 +203,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
