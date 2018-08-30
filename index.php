@@ -23,19 +23,19 @@
   <body>
     <div class="container">
       <div class="formInicio">
-        <form id="loginform" role="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="post" autocomplete="off">
+        <form id="loginform" role="form" action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
           <div class="formContent">
             <div class="imgcontainer">
               <img src="media/img_avatar2.png" alt="avatar" class="avatar">
   					</div>
             <div class="input-field" style="margin-bottom: 25px;">
               <i class="fas fa-user prefix"></i>
-              <input class="validate" type="text" name="nombreU" required>
+              <input class="validate" type="text" name="nombreU" required autocomplete="username">
               <label for="nombreU">Ingresa tu nombre de usuario</label>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <i class="fas fa-lock prefix"></i>
-              <input class="validate" type="password" name="claveU">
+              <input class="validate" type="password" name="claveU" autocomplete="current-password">
   						<label for="claveU">Ingresa tu contraseña</label>
   						<div>
                 <label style="float: right;"><a href="recupera.php"><b>¿Olvidó su contraseña?</b></a></label><br>

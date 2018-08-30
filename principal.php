@@ -6,7 +6,7 @@
 		header("Location: index.php");
 	}
 	$idUsuario = $_SESSION['id_usuario'];
-	$sql = "SELECT id, nombre FROM usuarios WHERE id = '$idUsuario'";
+	$sql = "SELECT id, nombre, apellido FROM usuario WHERE id = '$idUsuario'";
 	$result = $mysqli->query($sql);
 	$row = $result->fetch_assoc();
 ?>
@@ -40,7 +40,7 @@
           ?>
         </div>
         <div class="col s9">
-          <p><?php echo 'Bienvenido(a) '.utf8_decode($row['nombre']); ?></p>
+          <p><?php echo 'Bienvenido(a) '.utf8_decode($row['nombre']).' '.utf8_decode($row['apellido']); ?></p>
           <div class="container" id="contenido"></div>
         </div>
       </div>
