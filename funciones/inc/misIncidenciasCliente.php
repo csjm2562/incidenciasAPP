@@ -1,8 +1,8 @@
 <?php
-  $con=mysqli_connect('localhost','johan','root','login') or die ('Error en la conexion');
+  $con=mysqli_connect('localhost','johan','root','incidenciasapp') or die ('Error en la conexion');
   session_start();
   $idUsuario = $_SESSION['id_usuario'];
-  $sql="SELECT * FROM usuarios WHERE id = '$idUsuario'";
+  $sql="SELECT * FROM usuario WHERE id = '$idUsuario'";
   $resultado=mysqli_query($con,$sql) or die ('Error en el query database');
   $fila = mysqli_fetch_array( $resultado );
   mysqli_free_result( $resultado );
@@ -76,16 +76,16 @@
 			data:{"param1":"dame","limit":itemsPorPagina,"offset":desde, "id":id, "id_tipo":id_tipo},
 			type:"GET",
 			dataType:"json",
-			url:"funciones/inc/misIncidencias/conexionIncidencia.php"
+			url:"funciones/inc/conexiones/conexion_mis_incidencias_cliente.php"
 		}).done(function(data,textStatus,jqXHR) {
       var lista = data.lista;
 			$("#tablaIncidencia").html("");
 			$.each(lista, function(ind, elem){
   			$("<tr>"+
-          "<td class='center'>"+elem.idIncidencia+"</td>"+
-  				"<td class='center'>"+elem.estado+"</td>"+
-  				"<td class='center'>"+elem.url+"</td>"+
-  				"<td class='center'>"+elem.comentario+"</td>"+
+          "<td class='center'>"+elem.id_incidencia+"</td>"+
+  				"<td class='center'>"+elem.estado_actual+"</td>"+
+  				"<td class='center'>"+elem.url_video+"</td>"+
+  				"<td class='center'>"+elem.comentarios+"</td>"+
   				"<td class='center'>"+elem.localizacion+"</td>"+
   				"</tr>").appendTo($("#tablaIncidencia"));
   		});
@@ -113,7 +113,7 @@
       data:{"param1":"cuantos"},
       type:"GET",
       dataType:"json",
-      url:"funciones/inc/misIncidencias/conexionIncidencia.php"
+      url:"funciones/inc/conexiones/conexion_mis_incidencias_cliente.php"
     }).done(function(data,textStatus,jqXHR) {
       var total = data.total;
       crearPaginador(total);

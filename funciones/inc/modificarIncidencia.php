@@ -17,7 +17,7 @@
     var parametros = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "funciones/inc/modificarIncidencia/cargaMI.php",
+      url: "funciones/inc/conexiones/conexion_modificar_incidencia.php",
       data: parametros,
       success: function(data) {
         $('#contenido2').html(data);
