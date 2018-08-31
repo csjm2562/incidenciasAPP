@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-08-2018 a las 18:20:14
+-- Tiempo de generación: 31-08-2018 a las 07:39:41
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -91,6 +91,44 @@ CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `descripcion` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`id_producto`, `descripcion`) VALUES
+(1, 'Celular'),
+(2, 'Laptop'),
+(3, 'Modem'),
+(4, 'TV'),
+(5, 'Teclado'),
+(6, 'Monitor'),
+(7, 'Mouse'),
+(8, 'Cama'),
+(9, 'Silla'),
+(10, 'Corneta'),
+(11, 'Impresora'),
+(12, 'Pizarra'),
+(13, 'Pintura'),
+(14, 'Agua'),
+(15, 'Bombillo'),
+(16, 'Camisa'),
+(17, 'Pantalon'),
+(18, 'Camara'),
+(19, 'Bolso'),
+(20, 'Morral'),
+(21, 'Cartera'),
+(22, 'Correa'),
+(23, 'Gorra'),
+(24, 'Sombrero'),
+(25, 'Lapiz'),
+(26, 'Papel'),
+(27, 'Marcador'),
+(28, 'Color'),
+(29, 'Borrador'),
+(30, 'Antena'),
+(31, 'Memoria'),
+(32, 'Pendrive');
 
 -- --------------------------------------------------------
 
@@ -199,7 +237,7 @@ ALTER TABLE `incidencia`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

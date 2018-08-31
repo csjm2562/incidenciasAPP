@@ -29,6 +29,11 @@ $(document).ready(function() {
     $("#contenido").load('funciones/inc/bajaEmpleadoCliente.php');
       return false;
   });
+  $('.conPro').on('click', function() {
+    $('.navega li').removeClass('active');
+    $("#contenido").load('funciones/inc/contrataProducto.php');
+      return false;
+  });
   $('.detInc').on('click', function() {
     $('.navega li').removeClass('active');
     $("#contenido").load('funciones/inc/detalleIncidencia.php');

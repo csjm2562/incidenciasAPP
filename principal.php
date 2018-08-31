@@ -22,7 +22,7 @@
     <div class="principal">
       <nav>
         <div class="nav-wrapper teal">
-          <a href="principal.php" class="brand-logo">Logo</a>
+          <a href="principal.php" class="brand-logo">Logotipo</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="cierra.php" title="Cerrar sesión"><i class="fas fa-power-off"></i></a></li>
           </ul>
