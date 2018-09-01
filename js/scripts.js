@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  $('.altCli').on('click', function() {
+    $('.navega li').removeClass('active');
+    $("#contenido").load('funciones/inc/altaCliente.php');
+      return false;
+  });
+  $('.altEmp').on('click', function() {
+    $('.navega li').removeClass('active');
+    $("#contenido").load('funciones/inc/altaEmpleado.php');
+      return false;
+  });
   $('.altIncAdm').on('click', function() {
     $('.navega li').removeClass('active');
     $("#contenido").load('funciones/inc/altaIncidenciaAdministrador.php');
@@ -27,6 +37,11 @@ $(document).ready(function() {
   $('.bajEmpCli').on('click', function() {
     $('.navega li').removeClass('active');
     $("#contenido").load('funciones/inc/bajaEmpleadoCliente.php');
+      return false;
+  });
+  $('.bajPro').on('click', function() {
+    $('.navega li').removeClass('active');
+    $("#contenido").load('funciones/inc/bajaProducto.php');
       return false;
   });
   $('.conPro').on('click', function() {
@@ -81,23 +96,6 @@ $(document).ready(function() {
   $('.reportes').on('click', function() {
     $('.navega li').removeClass('active');
     $("#contenido").load('funciones/inc/reportes.php');
-      return false;
-  });
-
-
-  $('.altEmpCli').on('click', function() {
-      $('.navega li').removeClass('active');
-      $("#contenido").load('funciones/inc/altaEmpleadoCliente/altaEmpleadoCliente.php');
-        return false;
-  });
-  $('.altIncPetAdmCli').on('click', function() {
-      $('.navega li').removeClass('active');
-      $("#contenido").load('funciones/inc/altaIncidenciaAdministrador.php');
-        return false;
-  });
-  $('.conBajPro').on('click', function() {
-    $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/contratarBajarProducto/contratarBajarProducto.php');
       return false;
   });
 });
