@@ -115,15 +115,6 @@
 		return $msg;
 	}
 
-	function activarUsuario($id) {
-		global $mysqli;
-		$stmt = $mysqli->prepare("UPDATE usuarios SET activacion=1 WHERE id = ?");
-		$stmt->bind_param('s', $id);
-		$result = $stmt->execute();
-		$stmt->close();
-		return $result;
-	}
-
 	function isNullLogin($usuario, $password) {
 		if(strlen(trim($usuario)) < 1 || strlen(trim($password)) < 1) {
 			return true;
@@ -221,7 +212,34 @@
 			return null;
 		}
 	}
+*/
+	function obtener_productos(){
+		$mysqli = new mysqli("localhost","johan","root","incidenciasapp"); //MODIFICAR
+		$sql = "SELECT * FROM producto";
+		$query=$mysqli->query($sql);
+		$data =  array();
+		if($query){
+			while($r = $query->fetch_object()){
+				$data[] = $r;
+			}
+		}
+		return $data;
+	}
 
+	function obtener_productos_para_marcar($id){
+		$mysqli = new mysqli("localhost","johan","root","incidenciasapp"); //MODIFICAR
+		$sql = "SELECT * FROM producto_usuario WHERE usuario_id='$id'";
+		$query = $mysqli->query($sql);
+		$data = array();
+		if($query){
+			while($r = $query->fetch_object()){
+				$data[] = $r;
+			}
+		}
+		return $data;
+	}
+
+	/*
 	function verificaTokenPass($user_id, $token) {
 		global $mysqli;
 		$stmt = $mysqli->prepare("SELECT activacion FROM usuarios WHERE id = ? AND token_password = ? AND password_request = 1 LIMIT 1");

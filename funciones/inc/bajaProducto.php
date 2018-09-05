@@ -1,31 +1,42 @@
-<form role="form" id="contrata_producto" name="contrata_producto" method="post">
+<form role="form" id="baja_producto" name="baja_producto" method="post">
   <div class="row">
   <?php
-    $mysqli = new mysqli("localhost","johan","root","incidenciasapp"); //MODIFICAR
-    if($mysqli->connect_errno) {
-      echo "Falló al conectar".$mysqli->connect_errno;
-    } else {
-      $query = "SELECT * FROM producto";
-      $contador = 0;
-      $resultado = $mysqli->query($query);
-      while($row = mysqli_fetch_array($resultado)) {
+    require_once (__DIR__.'/../funciones.php');
+    $producto = obtener_productos();
+    $contador = 0;
+    session_start();
+    $obtPro = obtener_productos_para_marcar($_SESSION['id_usuario']);
+  ?>
+  <?php if(count($producto)>0):?>
+    <?php foreach($producto as $d):
+      $encontrado = false;
+      foreach($obtPro as $pc) {
+        if($pc->producto_id==$d->id_producto) {
+          $encontrado = true;
+          break;
+        }
+      }
+    ?>
+      <?php
         if($contador == 0 ) {
           echo "<div class='col s3'>";
           $contador++;
         } else {
           $contador++;
         }
-          echo "<p><label>
-                  <input type='checkbox' name='productos[]' value='".$row["id_producto"]."'>
-                  <span>".$row['descripcion']."</span>
-                </label></p>";
-          if ($contador == 10) {
-            echo "</div>";
-            $contador = 0;
-          }
-      }
-    }
-  ?>
+      ?>
+      <p><label>
+        <input type="checkbox" name="productos_<?php echo $d->id_producto; ?>" <?php if($encontrado){ echo "checked"; }?>>
+        <span><?php echo $d->descripcion; ?></span>
+      </label></p>
+      <?php
+        if ($contador == 10) {
+          echo "</div>";
+          $contador = 0;
+        }
+      ?>
+    <?php endforeach; ?>
+  <?php endif; ?>
   </div>
   <div class="row">
     <button type="submit" class="col s12 btn btn-large waves-effect">Enviar</button>
@@ -33,5 +44,16 @@
 </form>
 <div id="contenido2"></div>
 <script>
-
+  $('#baja_producto').submit(function(event){
+    var parametros = $(this).serialize();
+    $.ajax({
+      type: "POST",
+      url: "funciones/inc/conexiones/conexion_baja_producto.php",
+      data: parametros,
+      success: function(data) {
+        $('#contenido2').html(data);
+      }
+    });
+    event.preventDefault();
+  });
 </script>

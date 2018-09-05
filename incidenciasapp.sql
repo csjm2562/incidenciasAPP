@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-09-2018 a las 07:06:07
+-- Tiempo de generación: 05-09-2018 a las 10:18:38
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -78,7 +78,6 @@ INSERT INTO `incidencia` (`id_incidencia`, `id_producto`, `id_cliente`, `id_empl
 
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
   `descripcion` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -86,39 +85,61 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `id_usuario`, `descripcion`) VALUES
-(1, 0, 'Celular'),
-(2, 0, 'Laptop'),
-(3, 0, 'Modem'),
-(4, 0, 'TV'),
-(5, 0, 'Teclado'),
-(6, 0, 'Monitor'),
-(7, 0, 'Mouse'),
-(8, 0, 'Cama'),
-(9, 0, 'Silla'),
-(10, 0, 'Corneta'),
-(11, 0, 'Impresora'),
-(12, 0, 'Pizarra'),
-(13, 0, 'Pintura'),
-(14, 0, 'Agua'),
-(15, 0, 'Bombillo'),
-(16, 0, 'Camisa'),
-(17, 0, 'Pantalon'),
-(18, 0, 'Camara'),
-(19, 0, 'Bolso'),
-(20, 0, 'Morral'),
-(21, 0, 'Cartera'),
-(22, 0, 'Correa'),
-(23, 0, 'Gorra'),
-(24, 0, 'Sombrero'),
-(25, 0, 'Lapiz'),
-(26, 0, 'Papel'),
-(27, 0, 'Marcador'),
-(28, 0, 'Color'),
-(29, 0, 'Borrador'),
-(30, 0, 'Antena'),
-(31, 0, 'Memoria'),
-(32, 0, 'Pendrive');
+INSERT INTO `producto` (`id_producto`, `descripcion`) VALUES
+(1, 'Celular'),
+(2, 'Laptop'),
+(3, 'Modem'),
+(4, 'TV'),
+(5, 'Teclado'),
+(6, 'Monitor'),
+(7, 'Mouse'),
+(8, 'Cama'),
+(9, 'Silla'),
+(10, 'Corneta'),
+(11, 'Impresora'),
+(12, 'Pizarra'),
+(13, 'Pintura'),
+(14, 'Agua'),
+(15, 'Bombillo'),
+(16, 'Camisa'),
+(17, 'Pantalon'),
+(18, 'Camara'),
+(19, 'Bolso'),
+(20, 'Morral'),
+(21, 'Cartera'),
+(22, 'Correa'),
+(23, 'Gorra'),
+(24, 'Sombrero'),
+(25, 'Lapiz'),
+(26, 'Papel'),
+(27, 'Marcador'),
+(28, 'Color'),
+(29, 'Borrador'),
+(30, 'Antena'),
+(31, 'Memoria'),
+(32, 'Pendrive');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `producto_usuario`
+--
+
+CREATE TABLE `producto_usuario` (
+  `producto_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `producto_usuario`
+--
+
+INSERT INTO `producto_usuario` (`producto_id`, `usuario_id`) VALUES
+(1, 3),
+(2, 3),
+(3, 3),
+(15, 3),
+(25, 3);
 
 -- --------------------------------------------------------
 
@@ -191,7 +212,16 @@ INSERT INTO `usuario` (`id_usuario`, `id_tipo`, `id_producto`, `nombre_usuario`,
 (2, 2, 1, 'mcontreras', '$2y$10$8gGaRKR3wj9dLA94bbWl8uBU/oAQg2o.wIpIh2AJuHb2lD9tdtl.6', 'Micael', 'Contreras', 'micaelcontreras@gmail.com', 1),
 (3, 3, 1, 'midrogo', '$2y$10$J3wkDm4TxsmLJwKDOQ2f7eGWAwoSyOhZo.HcPPtgwrtYewjsKVNdq', 'Mary', 'Idrogo', 'maryidrogo@gmail.com', 1),
 (4, 2, 1, 'pmarchan', '$2y$10$XqSOWVcgXQSlY0wqoLVeJ.pjxwsqv0q0gTfAZd8wN8/2Hu.OcTbQ6', 'Pedro', 'Marchan', 'pedromarchan@gmail.com', 1),
-(5, 3, 1, 'erodriguez', '$2y$10$6ZSYBBI158f1IvIpy1q.Q..OyL3AfqsAU3p6Awe45v0PN0VsYpPQm', 'Eduardo', 'Rodriguez', 'eduardorodriguez@gmail.com', 1);
+(5, 3, 1, 'erodriguez', '$2y$10$6ZSYBBI158f1IvIpy1q.Q..OyL3AfqsAU3p6Awe45v0PN0VsYpPQm', 'Eduardo', 'Rodriguez', 'eduardorodriguez@gmail.com', 1),
+(6, 3, 1, 'lruiz', '$2y$10$EI/zSAKsM4h5gsW4F9wL7ee82HE0PUGYSVjlWnZ3npwBZggwmR5qW', 'Leudis', 'Ruiz', 'leudisruiz@gmail.com', 1),
+(7, 3, 1, 'jcabello', '$2y$10$l0MyWru5VGuB.X0Nc9mo1eW1kRiHKyrlKp7W73fRxpTul5OzXvMFG', 'Jesus', 'Cabello', 'jesuscabello@gmail.com', 1),
+(8, 3, 1, 'tcontreras', '$2y$10$HXMEQdp.9GP3N2rjPGuyjOEYUjFk1rr098d0UAIqleO6RsyiF940i', 'Tomasa', 'Contreras', 'tomasacontreras@gmail.com', 1),
+(9, 3, 1, 'msolano', '$2y$10$1S3L0PYSVs3FDid3K5ppguRS8rH6KDG37g/Al9MRka/mygcc6.QFi', 'Milfra', 'Solano', 'milfrasolano@gmail.com', 1),
+(10, 3, 1, 'nsolano', '$2y$10$BrhDo9SGR6ywqzqUd/lvLua1DCk711j./vbnNaKCH67HfoIYKANJa', 'Milfra', 'Solano', 'milfrasolano@gmail.com', 1),
+(11, 2, 1, 'prueba', '$2y$10$O9VbU0jEgmEO0XzuiwVJVOJMhsgCc3LH7zreIRaK1PATRPjwyQtgO', 'prueba', 'Prueba', 'prueba@gmail.com', 1),
+(12, 2, 1, 'krueba', '$2y$10$6p1.RsokC992JbAWch5HzuppLTjaepw234Ler7AA1AVKLkqyAvvnS', 'prueba', 'Prueba', 'prueba@gmail.com', 1),
+(13, 2, 1, 'porueba', '$2y$10$WfZl2Q2EcYJoclBL6T6O9OQkZZNozF2ufklaUMogE/6z2ZHA7/5.G', 'prueba', 'Prueba', 'prueba@gmail.com', 1),
+(14, 2, 1, 'iiorueba', '$2y$10$YnT0Y.ZMlHRxeOr6.tM1e..xfSh2LjWqiaJD6i3sWiA/Cyl1pNzsq', 'prueba', 'Prueba', 'prueba@gmail.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -208,6 +238,13 @@ ALTER TABLE `incidencia`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`);
+
+--
+-- Indices de la tabla `producto_usuario`
+--
+ALTER TABLE `producto_usuario`
+  ADD KEY `producto_id` (`producto_id`),
+  ADD KEY `usuario_id` (`usuario_id`);
 
 --
 -- Indices de la tabla `reporte`
@@ -265,7 +302,18 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `producto_usuario`
+--
+ALTER TABLE `producto_usuario`
+  ADD CONSTRAINT `producto_usuario_ibfk_1` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id_producto`),
+  ADD CONSTRAINT `producto_usuario_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

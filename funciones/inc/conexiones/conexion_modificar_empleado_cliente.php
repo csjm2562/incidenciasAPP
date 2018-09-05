@@ -8,7 +8,7 @@
       exit();
     }
     if (!empty($_POST['nombreU'])) {
-      echo "<h4>Productos</h4>";
+      echo "<h4>Productos</h4>";    
       $query = "SELECT * FROM producto";
       $contador = 0;
       $resultado = $mysqli->query($query);

@@ -22,6 +22,14 @@
       if(!$flag){
         $pass_hash = hashPassword($claveU);
         $registro = registraUsuario($nombreU, $pass_hash, $nombre, $apellido, $correoU, $activo, $tipoU, $idProducto);
+        $id=$mysqli->insert_id;
+        $productos = obtener_productos();
+      	foreach($productos as $prod) {
+      		if(isset($_POST["productos_".$prod->id_producto])) {
+        		$sql = "INSERT INTO producto_usuario (producto_id, usuario_id) VALUES ('".$prod->id_producto."','".$id."')";
+            $mysqli->query($sql);
+      		}
+      	}
         echo "El usuario $nombreU fué creado exitosamente.";
       }
     }
