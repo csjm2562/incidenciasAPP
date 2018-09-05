@@ -6,7 +6,7 @@
 		header("Location: index.php");
 	}
 	$idUsuario = $_SESSION['id_usuario'];
-	$sql = "SELECT id, nombre, apellido FROM usuario WHERE id = '$idUsuario'";
+	$sql = "SELECT id_usuario, nombre, apellido FROM usuario WHERE id_usuario = '$idUsuario'";
 	$result = $mysqli->query($sql);
 	$row = $result->fetch_assoc();
 ?>

@@ -6,11 +6,25 @@
     header("Location: principal.php");
   }
 	if(!empty($_POST)){
-		$nombreU = $mysqli->real_escape_string($_POST['nombreU']);
-		if(usuarioExiste($nombreU)){
+		$correoU = $mysqli->real_escape_string($_POST['correoU']);
+		if(emailExiste($correoU)){
+      $user_id = getValor('id', 'correo', $correoU);
+			$nombre = getValor('nombre', 'correo', $correoU);
+			$token = generaTokenPass($user_id);
 
+			$url = 'http://'.$_SERVER["SERVER_NAME"].'/login2/cambiaClave.php?user_id='.$user_id.'&token='.$token; //Modificar
+
+			$asunto = 'Recuperar Contraseña';
+			$cuerpo = "Hola $nombre: <br><br>Se ha solicitado un reinicio de contraseña.
+                 <br><br>Para restaurar la contraseña, visita la siguiente dirección:
+                 <a href='$url'>$url</a>";
+      if(enviarEmail($correoU, $nombre, $asunto, $cuerpo)){
+        echo "Hemos enviado un correo electronico a las direcion $correoU para restablecer tu password.<br />";
+        echo "<a href='index.php' >Iniciar Sesion</a>";
+        exit;
+      }
 		} else {
-			$usuario_error = "El nombre de usuario $nombreU no existe.";
+			$ccorreo_error = "La direccion de correo electronico no existe";
 		}
 	}
 ?>
@@ -32,10 +46,10 @@
               <img src="media/img_logo2.png" alt="avatar" class="avatar">
   					</div>
             <div class="input-field" style="margin-bottom: 25px;">
-              <i class="fas fa-user prefix"></i>
-              <input class="validate" type="text" name="nombreU" required autocomplete="username">
-              <label for="nombreU">Ingrese su nombre de usuario</label>
-              <span class="helper-text red-text"><?php if (isset($usuario_error)) echo $usuario_error; ?></span>
+              <i class="fas fa-envelope prefix"></i>
+              <input class="validate" type="email" name="correoU" required>
+              <label for="correoU">Ingrese su correo electrónico</label>
+              <span class="helper-text" data-error="Ingrese un formato de correo válido."><?php if (isset($ccorreo_error)) echo $ccorreo_error; ?></span>
             </div>
             <center>
               <div class="row">

@@ -8,8 +8,10 @@
 		$nombreU = $mysqli->real_escape_string($_POST['nombreU']);
 		$claveU = $mysqli->real_escape_string($_POST['claveU']);
 		$conClaveU = $mysqli->real_escape_string($_POST['conClaveU']);
+    $correoU = $mysqli->real_escape_string($_POST['correoU']);
 		$activo = 1; //MODIFICAR; 0-Inactivo, 1-Activo
 		$tipoU = 2; //MODIFICAR; 1-Administrador, 2-Empleado, 3-Cliente
+    $idProducto = 1;
 		if(!validaPassword($claveU, $conClaveU)){
       $flag = true;
 			$cpassword_error = "Las contraseñas no coinciden.";
@@ -20,7 +22,7 @@
 		}
     if(!$flag){
       $pass_hash = hashPassword($claveU);
-      $registro = registraUsuario($nombreU, $pass_hash, $nombre, $apellido, $activo, $tipoU);
+      $registro = registraUsuario($nombreU, $pass_hash, $nombre, $apellido, $correoU, $activo, $tipoU, $idProducto);
       $usuario_creado = "El usuario $nombreU fué creado exitosamente.";
     }
 	}
@@ -35,7 +37,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="formInicio" style="margin-top: 6%;">
+      <div class="formInicio" style="margin-top: 0.5%;">
         <form role="form" action="<?php $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
           <div class="formContent">
             <div class="imgcontainer">
@@ -65,6 +67,11 @@
               <input class="validate" type="password" name="conClaveU" required autocomplete="new-password">
               <label for="conClaveU">Vuelva a ingresar su contraseña</label>
               <span class="helper-text red-text"><?php if (isset($cpassword_error)) echo $cpassword_error; ?></span>
+            </div>
+            <div class="input-field" style="margin-bottom: 25px;">
+              <input class="validate" type="email" name="correoU" required>
+              <label for="correoU">Ingrese su correo electrónico</label>
+              <span class="helper-text" data-error="Ingrese un formato de correo válido."></span>
             </div>
             <center>
               <div class="row">

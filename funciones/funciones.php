@@ -9,7 +9,7 @@
 
 	function usuarioExiste($usuario) {
 		global $mysqli;
-		$stmt = $mysqli->prepare("SELECT id FROM usuario WHERE nombre_usuario = ? LIMIT 1");
+		$stmt = $mysqli->prepare("SELECT id_usuario FROM usuario WHERE nombre_usuario = ? LIMIT 1");
 		$stmt->bind_param("s", $usuario);
 		$stmt->execute();
 		$stmt->store_result();
@@ -21,10 +21,10 @@
 			return false;
 		}
 	}
-/*
+
 	function emailExiste($email) {
 		global $mysqli;
-		$stmt = $mysqli->prepare("SELECT id FROM usuarios WHERE correo = ? LIMIT 1");
+		$stmt = $mysqli->prepare("SELECT id_usuario FROM usuario WHERE correo = ? LIMIT 1");
 		$stmt->bind_param("s", $email);
 		$stmt->execute();
 		$stmt->store_result();
@@ -36,7 +36,7 @@
 			return false;
 		}
 	}
-
+/*
 	function generateToken() {
 		$gen = md5(uniqid(mt_rand(), false));
 		return $gen;
@@ -58,10 +58,10 @@
 		}
 	}
 
-	function registraUsuario($usuario, $pass_hash, $nombre, $apellido, $activo, $tipo_usuario) {
+	function registraUsuario($usuario, $pass_hash, $nombre, $apellido, $correoU, $activo, $tipo_usuario, $id_producto) {
 		global $mysqli;
-		$stmt = $mysqli->prepare("INSERT INTO usuario (nombre_usuario, password, nombre, apellido, activacion, id_tipo) VALUES(?,?,?,?,?,?)");
-		$stmt->bind_param('ssssii', $usuario, $pass_hash, $nombre, $apellido, $activo, $tipo_usuario);
+		$stmt = $mysqli->prepare("INSERT INTO usuario (id_tipo, id_producto, nombre_usuario, password, nombre, apellido, correo, activacion) VALUES(?,?,?,?,?,?,?,?)");
+		$stmt->bind_param('iisssssi', $tipo_usuario, $id_producto, $usuario, $pass_hash, $nombre, $apellido, $correoU, $activo);
 		if ($stmt->execute()) {
 			return $mysqli->insert_id;
 		} else {
@@ -134,8 +134,8 @@
 */
 	function login($usuario, $password)	{
 		global $mysqli;
-		$stmt = $mysqli->prepare("SELECT id, id_tipo, password FROM usuario WHERE nombre_usuario = ? LIMIT 1");
-		$stmt->bind_param("s", $usuario);
+		$stmt = $mysqli->prepare("SELECT id_usuario, id_tipo, password FROM usuario WHERE nombre_usuario = ? || correo = ? LIMIT 1");
+		$stmt->bind_param("ss", $usuario, $usuario);
 		$stmt->execute();
 		$stmt->store_result();
 		$rows = $stmt->num_rows;
@@ -155,7 +155,7 @@
 				$errors = 'El usuario no esta activo';
 			}
 		} else {
-			$errors = "El nombre de usuario no existe";
+			$errors = "El nombre de usuario o correo electrónico no existe";
 		}
 		return $errors;
 	}

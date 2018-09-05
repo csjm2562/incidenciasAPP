@@ -5,16 +5,20 @@
       <label for="nombreU">Ingrese nombre de usuario</label>
     </div>
     <div class="input-field col s6">
-      <input class="validate" type="password" name="claveU" minlength="6" required>
-      <label for="claveU">Ingrese contraseña</label>
+      <input class="validate" type="email" name="correoU" required>
+      <label for="correoU">Ingrese su correo electrónico</label>
     </div>
-    <div class="input-field col s6">
+    <div class="input-field col s4">
       <input class="validate" type="text" name="nombre" required pattern="[A-Za-z ]+">
       <label for="nombre">Ingrese nombre</label>
     </div>
-    <div class="input-field col s6">
+    <div class="input-field col s4">
       <input class="validate" type="text" name="apellido" required pattern="[A-Za-z ]+">
       <label for="apellido">Ingrese apellido</label>
+    </div>
+    <div class="input-field col s4">
+      <input class="validate" type="password" name="claveU" minlength="6" required>
+      <label for="claveU">Ingrese contraseña</label>
     </div>
   </div>
   <div class="row">

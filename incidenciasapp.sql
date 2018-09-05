@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-08-2018 a las 07:39:41
+-- Tiempo de generación: 05-09-2018 a las 07:06:07
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -59,27 +59,16 @@ CREATE TABLE `incidencia` (
 --
 
 INSERT INTO `incidencia` (`id_incidencia`, `id_producto`, `id_cliente`, `id_empleado`, `estado_actual`, `historico_estado`, `hora_estado`, `url_video`, `hora_estado_actual`, `peticion_servicio`, `localizacion`, `comentarios`) VALUES
-(2, 0, 4, 2, 0, '', '', '', '', '', '', ''),
-(3, 0, 4, 2, 2, '', '', '', '', '', '', ''),
-(4, 0, 4, 2, 2, '', '', '', '', '', '1234567890', ''),
-(5, 0, 4, 2, 2, '', '', '', '', '', '1234567890', 'Comentario de prueba.'),
-(6, 0, 4, 2, 2, '', '', '', '', '0', '1234567890', 'Comentario de prueba.'),
-(7, 0, 4, 2, 2, '', '', '', '', '0', '1234567890', 'Comentario de prueba.'),
-(8, 0, 4, 2, 2, '', '', '', '1535618194', '0', '1234567890', 'Comentario de prueba.'),
-(9, 0, 4, 2, 2, '', '', '', '1535618266', '0', '1234567890', 'Comentario de prueba.'),
-(10, 0, 4, 3, 2, '', '', '', '1535618307', '0', '1234567890', 'Comentario de prueba.'),
-(11, 0, 4, 3, 2, '', '', '', '1535618332', '0', '1234567890', 'Comentario de prueba.'),
-(12, 0, 4, 2, 2, '', '', '', '1535618354', '0', '1234567890', 'Comentario de prueba.'),
-(13, 0, 4, 2, 2, '.2.', '', '', '1535618556', '0', '1234567890', 'Comentario de prueba.'),
-(14, 0, 4, 2, 2, '.2~.', '', '', '1535618566', '0', '1234567890', 'Comentario de prueba.'),
-(15, 0, 4, 2, 2, '2~.', '', '', '1535618595', '0', '1234567890', 'Comentario de prueba.'),
-(16, 0, 4, 3, 2, '2~', '', '', '1535618604', '0', '1234567890', 'Comentario de prueba.'),
-(17, 0, 4, 2, 2, '2~', '', '', 'time()', '0', '1234567890', 'Mas comentarios.'),
-(18, 0, 4, 2, 2, '2~', '', '', '1535618662', '0', '1234567890', 'Comentario de prueba.'),
-(19, 0, 4, 2, 2, '2~', '1535618720~', '', '1535618720', '0', '1234567890', 'Comentario de prueba.'),
-(20, 0, 4, 2, 2, '2~', '1535618761~', '1535593584_1535593644_1234567890', '1535618761', '0', '1234567890', 'Comentario de prueba.'),
-(21, 0, 4, 2, 2, '2~', '1535618837~', '1535593584_1535593644_1234567890', '1535618837', '0', '1234567890', 'Comentario de prueba.'),
-(22, 1, 1, 0, 1, '1~', '1535619449~', 'NULL', '1535619449', '0', 'NULL', 'Probando');
+(1, 0, 0, 4, 2, '2~', '1536120444~', '1536098763_1536098823_5248631452', '1536120444', '0', '5248631452', 'prueba'),
+(2, 1, 1, 0, 1, '1~', '1536120975~', 'NULL', '1536120975', '0', 'NULL', 'pruebamodifica'),
+(3, 1, 1, 4, 1, '1~', '1536121004~', 'NULL', '1536121004', '1', 'NULL', 'Probando2'),
+(4, 1, 4, 4, 1, '1~', '1536121523~', 'NULL', '1536121523', '1', 'NULL', 'Prueba2'),
+(5, 1, 4, 0, 1, '1~', '1536122068~', 'NULL', '1536122068', '1', 'NULL', 'pruebaempleado'),
+(6, 0, 5, 4, 2, '2~', '1536122201~', '1536100486_1536100546_5246899', '1536122201', '0', '5246899', 'pruebaincidencia'),
+(7, 1, 5, 0, 1, '1~', '1536122304~', 'NULL', '1536122304', '1', 'NULL', 'altapeticioncliente'),
+(8, 1, 5, 0, 1, '1~', '1536122322~', 'NULL', '1536122322', '0', 'NULL', 'altaincidenciacliente'),
+(9, 1, 1, 0, 1, '1~', '1536122347~', 'NULL', '1536122347', '1', 'NULL', 'petadm'),
+(10, 1, 1, 0, 1, '1~', '1536122356~', 'NULL', '1536122356', '0', 'NULL', 'incadm');
 
 -- --------------------------------------------------------
 
@@ -89,6 +78,7 @@ INSERT INTO `incidencia` (`id_incidencia`, `id_producto`, `id_cliente`, `id_empl
 
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `descripcion` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -96,39 +86,39 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `descripcion`) VALUES
-(1, 'Celular'),
-(2, 'Laptop'),
-(3, 'Modem'),
-(4, 'TV'),
-(5, 'Teclado'),
-(6, 'Monitor'),
-(7, 'Mouse'),
-(8, 'Cama'),
-(9, 'Silla'),
-(10, 'Corneta'),
-(11, 'Impresora'),
-(12, 'Pizarra'),
-(13, 'Pintura'),
-(14, 'Agua'),
-(15, 'Bombillo'),
-(16, 'Camisa'),
-(17, 'Pantalon'),
-(18, 'Camara'),
-(19, 'Bolso'),
-(20, 'Morral'),
-(21, 'Cartera'),
-(22, 'Correa'),
-(23, 'Gorra'),
-(24, 'Sombrero'),
-(25, 'Lapiz'),
-(26, 'Papel'),
-(27, 'Marcador'),
-(28, 'Color'),
-(29, 'Borrador'),
-(30, 'Antena'),
-(31, 'Memoria'),
-(32, 'Pendrive');
+INSERT INTO `producto` (`id_producto`, `id_usuario`, `descripcion`) VALUES
+(1, 0, 'Celular'),
+(2, 0, 'Laptop'),
+(3, 0, 'Modem'),
+(4, 0, 'TV'),
+(5, 0, 'Teclado'),
+(6, 0, 'Monitor'),
+(7, 0, 'Mouse'),
+(8, 0, 'Cama'),
+(9, 0, 'Silla'),
+(10, 0, 'Corneta'),
+(11, 0, 'Impresora'),
+(12, 0, 'Pizarra'),
+(13, 0, 'Pintura'),
+(14, 0, 'Agua'),
+(15, 0, 'Bombillo'),
+(16, 0, 'Camisa'),
+(17, 0, 'Pantalon'),
+(18, 0, 'Camara'),
+(19, 0, 'Bolso'),
+(20, 0, 'Morral'),
+(21, 0, 'Cartera'),
+(22, 0, 'Correa'),
+(23, 0, 'Gorra'),
+(24, 0, 'Sombrero'),
+(25, 0, 'Lapiz'),
+(26, 0, 'Papel'),
+(27, 0, 'Marcador'),
+(28, 0, 'Color'),
+(29, 0, 'Borrador'),
+(30, 0, 'Antena'),
+(31, 0, 'Memoria'),
+(32, 0, 'Pendrive');
 
 -- --------------------------------------------------------
 
@@ -181,13 +171,14 @@ INSERT INTO `tipo_usuario` (`id`, `tipo`) VALUES
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `id_tipo` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `nombre_usuario` varchar(30) NOT NULL,
   `password` varchar(130) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(80) NOT NULL,
+  `correo` varchar(80) NOT NULL,
   `activacion` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -195,11 +186,12 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `id_tipo`, `id_producto`, `nombre_usuario`, `password`, `nombre`, `apellido`, `activacion`) VALUES
-(1, 1, 0, 'jsolano', '$2y$10$1Z3SQvkA3I4ITaJzY07guu6EGG4OA66/qtB.MmYxw5SOYEnM9Ce.S', 'Johan', 'Solano', 1),
-(2, 2, 0, 'mcontreras', '$2y$10$1Z3SQvkA3I4ITaJzY07guu6EGG4OA66/qtB.MmYxw5SOYEnM9Ce.S', 'Micael', 'Contreras', 1),
-(3, 2, 0, 'midrogo', '$2y$10$1Z3SQvkA3I4ITaJzY07guu6EGG4OA66/qtB.MmYxw5SOYEnM9Ce.S', 'Mary', 'Idrogo', 1),
-(4, 3, 0, 'pmarchan', '$2y$10$1Z3SQvkA3I4ITaJzY07guu6EGG4OA66/qtB.MmYxw5SOYEnM9Ce.S', 'Pedro', 'Marchan', 1);
+INSERT INTO `usuario` (`id_usuario`, `id_tipo`, `id_producto`, `nombre_usuario`, `password`, `nombre`, `apellido`, `correo`, `activacion`) VALUES
+(1, 1, 1, 'jsolano', '$2y$10$/tzwk26x2ls.Sp0MKVDS.u9SMZ3xBgWmRhi8c.V0gO218HKPt7i3O', 'Johan', 'Solano', 'johansolano@gmail.com', 1),
+(2, 2, 1, 'mcontreras', '$2y$10$8gGaRKR3wj9dLA94bbWl8uBU/oAQg2o.wIpIh2AJuHb2lD9tdtl.6', 'Micael', 'Contreras', 'micaelcontreras@gmail.com', 1),
+(3, 3, 1, 'midrogo', '$2y$10$J3wkDm4TxsmLJwKDOQ2f7eGWAwoSyOhZo.HcPPtgwrtYewjsKVNdq', 'Mary', 'Idrogo', 'maryidrogo@gmail.com', 1),
+(4, 2, 1, 'pmarchan', '$2y$10$XqSOWVcgXQSlY0wqoLVeJ.pjxwsqv0q0gTfAZd8wN8/2Hu.OcTbQ6', 'Pedro', 'Marchan', 'pedromarchan@gmail.com', 1),
+(5, 3, 1, 'erodriguez', '$2y$10$6ZSYBBI158f1IvIpy1q.Q..OyL3AfqsAU3p6Awe45v0PN0VsYpPQm', 'Eduardo', 'Rodriguez', 'eduardorodriguez@gmail.com', 1);
 
 --
 -- Índices para tablas volcadas
@@ -218,10 +210,28 @@ ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`);
 
 --
+-- Indices de la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  ADD PRIMARY KEY (`id_reporte`);
+
+--
+-- Indices de la tabla `tipo_reporte`
+--
+ALTER TABLE `tipo_reporte`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -231,7 +241,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `incidencia`
 --
 ALTER TABLE `incidencia`
-  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -240,10 +250,22 @@ ALTER TABLE `producto`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
+-- AUTO_INCREMENT de la tabla `reporte`
+--
+ALTER TABLE `reporte`
+  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

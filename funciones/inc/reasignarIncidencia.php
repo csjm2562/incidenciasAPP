@@ -18,6 +18,9 @@
 </form>
 <div id="resultados_ri"></div><br>
 <script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
   $select = $('#usuario');
   $.ajax({
     url:"funciones/inc/conexiones/conexion_reasignar_incidencia_leer.php",

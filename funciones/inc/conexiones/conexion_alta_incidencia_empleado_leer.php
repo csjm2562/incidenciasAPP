@@ -8,7 +8,7 @@
     $resultado = $mysqli->query($query);
     $jsondata['seleccionCliente'] = '';
     while($row = mysqli_fetch_array($resultado)) {
-      $jsondata['seleccionCliente'] .= '<option name="cliente" id="cliente" value="'.$row["id"].'">'.$row["nombre_usuario"].'</option>';
+      $jsondata['seleccionCliente'] .= '<option name="cliente" id="cliente" value="'.$row["id_usuario"].'">'.$row["nombre_usuario"].'</option>';
     }
     header('Content-type: application/json; charset=utf-8');
     print_r(json_encode($jsondata));
