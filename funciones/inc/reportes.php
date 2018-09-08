@@ -1,6 +1,6 @@
-<h4>Reportes</h4>
+<h4>Reportes</h4><br>
 <div class="divider"></div>
-<table>
+<table class="highlight responsive-table">
   <thead>
     <tr>
       <th class="center">ID</th>
