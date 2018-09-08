@@ -1,8 +1,10 @@
+<h4>Reasignar incidencias</h4><br>
 <form role="form" id="agregar_RI" name="agregar_RI" method="post">
   <div class="row">
     <div class="input-field col s6">
-      <input class="validate" type="text" name="incidencia">
+      <input class="validate" type="text" name="incidencia" required>
       <label for="incidencia">Ingrese ID de la incidencia</label>
+      <span class="helper-text" data-error="Este campo no puede estar vacío."></span>
     </div>
     <div class="input-field col s6">
       <select name="usuario" id="usuario">
