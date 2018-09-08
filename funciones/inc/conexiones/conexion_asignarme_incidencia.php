@@ -10,7 +10,7 @@
     if (!empty($_POST['incidencia'])) {
       $incidencia = $_POST["incidencia"];
       $usuario = $_POST["usuario"];
-      $query = "UPDATE incidencia SET id_empleado='$usuario' WHERE id_incidencia='$incidencia'";
+      $query = "UPDATE incidencia SET id_empleado='$usuario', estado_actual='2' WHERE id_incidencia='$incidencia'";
       $resultado = $mysqli->query($query);
       echo "La incidencia ".$incidencia." fué asignada correctamente.";
     } else {
