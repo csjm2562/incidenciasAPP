@@ -1,3 +1,4 @@
+<h4>Eliminar productos</h4><br>
 <form role="form" id="baja_producto" name="baja_producto" method="post">
   <div class="row">
   <?php

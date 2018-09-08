@@ -1,4 +1,4 @@
-
+<h4>Contratar productos</h4><br>
 <form role="form" id="contrata_producto" name="contrata_producto" method="post">
   <div class="row">
   <?php
