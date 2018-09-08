@@ -59,9 +59,9 @@
               <span class="helper-text" data-error="El apellido no puede contener caracteres númericos ni especiales."></span>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
-              <input class="validate" type="password" name="claveU" minlength="6" required autocomplete="new-password">
+              <input class="validate" type="password" name="claveU" minlength="8" required autocomplete="new-password">
               <label for="claveU">Ingrese contraseña</label>
-              <span class="helper-text" data-error="La contraseña debe de tener un mínimo de 6 caracteres."></span>
+              <span class="helper-text" data-error="La contraseña debe de tener un mínimo de 8 caracteres."></span>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="password" name="conClaveU" required autocomplete="new-password">
