@@ -13,8 +13,10 @@
           $mysqli->query($sql);
     		}
     	}
+      echo "Los productos fueron contratados con éxito.";
+    } else {
+      echo "Por favor seleccione por lo menos un producto.";
     }
-    echo "Los productos fueron contratados con éxito.";
     exit();
   }
 ?>

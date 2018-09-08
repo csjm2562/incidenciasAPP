@@ -6,17 +6,22 @@
   if (!empty($_POST['incidencia'])) {
     $con=mysqli_connect('localhost','johan','root','incidenciasapp') or die ('Error en la conexion');
     $incidencia = $_POST["incidencia"];
-    $sql="SELECT * FROM incidencia WHERE id_incidencia = '$incidencia'";
+    $usuario = $_POST["usuario"];
+    $sql="SELECT * FROM incidencia WHERE id_incidencia='$incidencia'";
     $resultado=mysqli_query($con,$sql) or die ('Error en el query database');
     $fila = mysqli_fetch_array( $resultado );
-    mysqli_free_result( $resultado );
-    mysqli_close( $con );
-    echo '<b>Localización: </b>'.$fila['localizacion'];
-?>
-    <div class="video-container">
-      <?php echo "".$fila['url_video']; ?>
-    </div>
-<?php
+    if ($fila['id_cliente'] == $usuario || $fila['id_empleado'] == $usuario) {
+      $sql="SELECT * FROM incidencia WHERE id_incidencia = '$incidencia'";
+      $resultado=mysqli_query($con,$sql) or die ('Error en el query database');
+      $fila = mysqli_fetch_array( $resultado );
+      mysqli_free_result( $resultado );
+      mysqli_close( $con );
+      echo '<b>Localización: </b>'.$fila['localizacion'];
+      echo '<div class="video-container">'.$fila['url_video'].'</div>';
+      echo '<b>Comentarios: </b>'.$fila['comentarios'];
+    } else {
+      echo "El ID: ".$incidencia." no está asociado a tu cuenta. \nIntenta con otro.";
+    }
   } else {
     echo "Error desconocido.";
   }
