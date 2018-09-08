@@ -1,8 +1,10 @@
+<h4>Reabrir incidencia</h4><br>
 <form role="form" name="reabrir" id="reabrir" method="post">
   <div class="row">
     <div class="input-field col s6">
-      <input class="validate" type="text" name="incidencia">
+      <input class="validate" type="text" name="incidencia" required>
       <label for="incidencia">Ingrese ID de la incidencia</label>
+      <span class="helper-text" data-error="Este campo no puede estar vacío."></span>
     </div>
     <button type="submit" class="btn btn-large waves-effect col s6">Abrir</button>
   </div>
