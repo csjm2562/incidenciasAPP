@@ -8,9 +8,9 @@
   mysqli_free_result( $resultado );
   mysqli_close( $con );
 ?>
-<h4>Mis incidencias</h4>
+<h4>Mis incidencias</h4><br>
 <div class="divider"></div>
-<table>
+<table class="highlight responsive-table">
   <thead>
     <tr>
       <th class="center">ID</th>
@@ -84,9 +84,9 @@
   			$("<tr>"+
           "<td class='center'>"+elem.id_incidencia+"</td>"+
   				"<td class='center'>"+elem.estado_actual+"</td>"+
-  				"<td class='center'>"+elem.url_video+"</td>"+
-  				"<td class='center'>"+elem.comentarios+"</td>"+
-  				"<td class='center'>"+elem.localizacion+"</td>"+
+  				"<td>"+elem.url_video+"</td>"+
+  				"<td>"+elem.comentarios+"</td>"+
+  				"<td>"+elem.localizacion+"</td>"+
   				"</tr>").appendTo($("#tablaIncidencia"));
   		});
 		}).fail(function(jqXHR,textStatus,textError) {
