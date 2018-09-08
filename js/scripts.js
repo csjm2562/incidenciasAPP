@@ -26,7 +26,7 @@ $(document).ready(function() {
   });
   $('.altPetEmp').on('click', function() {
     $('.navega li').removeClass('active');
-    $("#contenido").load('funciones/inc/altaPeticionAdministrador.php');
+    $("#contenido").load('funciones/inc/altaPeticionEmpleado.php');
       return false;
   });
   $('.asiInc').on('click', function() {
