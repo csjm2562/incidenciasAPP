@@ -8,12 +8,14 @@
   mysqli_free_result( $resultado );
   mysqli_close( $con );
 ?>
+<h4>Asignarme incidencia</h4><br>
 <form role="form" id="agregar_AI" name="agregar_AI" method="post">
   <input value="<?php echo ''.$fila['id_usuario']; ?>" type="hidden" name="usuario">
   <div class="row">
     <div class="input-field col s6">
-      <input class="validate" type="text" name="incidencia">
+      <input class="validate" type="text" name="incidencia" required>
       <label for="incidencia">Ingrese ID de la incidencia</label>
+      <span class="helper-text" data-error="Este campo no puede estar vacío."></span>
     </div>
     <button type="submit" name="enviar" class="btn btn-large waves-effect col s6">Enviar</button>
   </div>
