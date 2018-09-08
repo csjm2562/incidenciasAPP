@@ -1,12 +1,7 @@
 <form role="form" name="modificarIP" id="modificarIP" method="post">
   <div class="row">
-    <div class="col s6">
-      <select name="usuario" id="usuario">
-        <option value="" disabled selected>Empleados</option>
-      </select>
-    </div>
     <div class="input-field col s12">
-      <textarea class="materialize-textarea" name="comentario"></textarea>
+      <textarea class="materialize-textarea" name="comentario" required></textarea>
       <label for="comentario">Comentarios</label>
     </div>
     <button type="submit" class="btn btn-large waves-effect right">Guardar</button>
