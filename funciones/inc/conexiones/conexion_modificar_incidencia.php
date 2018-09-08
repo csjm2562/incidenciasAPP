@@ -10,9 +10,17 @@
     if (!empty($_POST['incidencia'])) {
       $incidencia = $_POST["incidencia"];
       $comentario = $_POST["comentario"];
-      $query = "UPDATE incidencia SET comentarios='$comentario' WHERE id_incidencia='$incidencia'";
-      $resultado = $mysqli->query($query);
-      echo "La incidencia ".$incidencia." fué actualizada con ".$comentario;
+      $usuario = $_POST["usuario"];
+      $sql="SELECT * FROM incidencia WHERE id_incidencia='$incidencia'";
+      $resultado=mysqli_query($mysqli,$sql) or die ('Error en el query database');
+      $fila = mysqli_fetch_array( $resultado );
+      if ($fila['id_cliente'] == $usuario) {
+        $query = "UPDATE incidencia SET comentarios='$comentario' WHERE id_incidencia='$incidencia'";
+        $resultado = $mysqli->query($query);
+        echo "La incidencia ".$incidencia." fué actualizada con ".$comentario;
+      } else {
+        echo "El ID: ".$incidencia." no está asociado a tu cuenta. Intenta con otro.";
+      }
     } else {
       echo "Error desconocido.";
     }
