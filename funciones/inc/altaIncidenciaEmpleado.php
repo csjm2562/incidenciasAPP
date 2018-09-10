@@ -21,11 +21,11 @@ echo "".strtotime("selec_hasta");
   </div>
   <div class="row">
     <div class="input-field col s3">
-      <input type="text" class="timepicker" name="selec_desde" value="<?php date_default_timezone_set("America/Caracas"); echo date("h:i:s A", strtotime("- 1 minute"));?>">
+      <input type="time" name="selec_desde" value="<?php date_default_timezone_set("America/Caracas"); echo date("h:i:s", strtotime("- 1 minute"));?>">
       <label class="active" for="selec_desde">Desde</label>
     </div>
     <div class="input-field col s3">
-      <input type="text" class="timepicker" name="selec_hasta" value="<?php date_default_timezone_set("America/Caracas"); echo date("h:i:s A");?>">
+      <input type="time" name="selec_hasta" value="<?php date_default_timezone_set("America/Caracas"); echo date("h:i:s");?>">
       <label class="active" for="selec_hasta">Hasta</label>
     </div>
     <div class="input-field col s6">
