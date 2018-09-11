@@ -26,12 +26,12 @@
 </table>
 <ul class="pagination center" id="paginador"></ul>
 <script>
-  var id = '<?php echo ''.$fila['id_usuario']; ?>';
-  var id_tipo = '<?php echo ''.$fila['id_tipo']; ?>';
+  var id = "<?php echo $fila['id_usuario']; ?>";
+  var id_tipo = "<?php echo $fila['id_tipo']; ?>";
   var paginador;
   var totalPaginas;
-  var itemsPorPagina = 7;
-  var numerosPorPagina = 15;
+  var itemsPorPagina = 5;
+  var numerosPorPagina = 3;
   function crearPaginador(totalItems) {
     paginador = $(".pagination");
     totalPaginas = Math.ceil(totalItems/itemsPorPagina);
@@ -73,7 +73,7 @@
   function cargaPagina(pagina) {
     var desde = pagina * itemsPorPagina;
 		$.ajax({
-			data:{"param1":"dame","limit":itemsPorPagina,"offset":desde, "id":id, "id_tipo":id_tipo},
+			data:{"param1":"dame","limit":itemsPorPagina,"offset":desde, "id":parseInt(id), "id_tipo":id_tipo},
 			type:"GET",
 			dataType:"json",
 			url:"funciones/inc/conexiones/conexion_incidencias_asignadas_a_mi.php"
@@ -110,7 +110,7 @@
 
   $(function() {
     $.ajax({
-      data:{"param1":"cuantos"},
+      data:{"param1":"cuantos",id:parseInt(id)},
       type:"GET",
       dataType:"json",
       url:"funciones/inc/conexiones/conexion_incidencias_asignadas_a_mi.php"

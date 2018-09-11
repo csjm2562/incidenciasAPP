@@ -7,13 +7,12 @@
   	$jsondata = array();
   	$jsondataList = array();
   	if($_GET['param1']=="cuantos")	{
-  		$myquery = "SELECT COUNT(*) total FROM incidencia";
+  		$myquery = "SELECT COUNT(*) total FROM incidencia WHERE id_empleado = ".$_GET["id"]." ";
   		$resultado = $mysqli->query($myquery);
   		$fila = $resultado ->fetch_assoc();
   		$jsondata['total'] = $fila['total'];
   	}	elseif($_GET["param1"]=="dame") {
-      $id = $_GET["id"];
-  		$myquery = "SELECT * FROM incidencia WHERE id_empleado = '$id' && estado_actual = '2' LIMIT ".$mysqli->real_escape_string($_GET['limit'])." OFFSET ".$mysqli->real_escape_string($_GET["offset"]);
+  		$myquery = "SELECT * FROM incidencia WHERE id_empleado = ".$_GET['id']." AND estado_actual = '2' LIMIT ".$mysqli->real_escape_string($_GET['limit'])." OFFSET ".$mysqli->real_escape_string($_GET["offset"]);
   		$resultado = $mysqli->query($myquery);
   		while($fila = $resultado ->fetch_assoc())	{
   			$jsondatareport = array();

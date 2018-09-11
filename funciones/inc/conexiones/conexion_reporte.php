@@ -2,7 +2,7 @@
   $mysqli = new mysqli("localhost","johan","root","incidenciasapp");
   if($mysqli->connect_errno) {
     echo "Falló al conectar".$mysqli->connect_errno;
-  } else {
+  } else {	  
     $mysqli->set_charset("utf8");
   	$jsondata = array();
   	$jsondataList = array();

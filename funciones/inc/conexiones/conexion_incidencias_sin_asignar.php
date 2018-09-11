@@ -7,7 +7,7 @@
   	$jsondata = array();
   	$jsondataList = array();
   	if($_GET['param1']=="cuantos")	{
-  		$myquery = "SELECT COUNT(*) total FROM incidencia";
+  		$myquery = "SELECT COUNT(*) total FROM incidencia WHERE id_empleado = 0";
   		$resultado = $mysqli->query($myquery);
   		$fila = $resultado ->fetch_assoc();
   		$jsondata['total'] = $fila['total'];

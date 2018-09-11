@@ -238,7 +238,7 @@
 		}
 		return $data;
 	}
-
+	
 	/*
 	function verificaTokenPass($user_id, $token) {
 		global $mysqli;

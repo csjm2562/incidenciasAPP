@@ -1,3 +1,13 @@
+<?php
+  $con=mysqli_connect('localhost','johan','root','incidenciasapp') or die ('Error en la conexion');
+  session_start();
+  $idUsuario = $_SESSION['id_usuario'];
+  $sql="SELECT * FROM usuario WHERE id_usuario = '$idUsuario'";
+  $resultado=mysqli_query($con,$sql) or die ('Error en el query database');
+  $fila = mysqli_fetch_array( $resultado );
+  mysqli_free_result( $resultado );
+  mysqli_close( $con );
+?>
 <h4>Reportes</h4><br>
 <div class="divider"></div>
 <table class="highlight responsive-table">
@@ -10,15 +20,16 @@
     </tr>
   </thead>
   <tbody id="tablaReportes">
-
   </tbody>
 </table>
 <ul class="pagination center" id="paginador"></ul>
 <script>
+  var id = '<?php echo ''.$fila['id_usuario']; ?>';
+  var id_tipo = '<?php echo ''.$fila['id_tipo']; ?>';
   var paginador;
   var totalPaginas;
-  var itemsPorPagina = 7;
-  var numerosPorPagina = 15;
+  var itemsPorPagina = 5;
+  var numerosPorPagina = 3;
   function crearPaginador(totalItems) {
     paginador = $(".pagination");
     totalPaginas = Math.ceil(totalItems/itemsPorPagina);
@@ -96,7 +107,7 @@
 
   $(function() {
     $.ajax({
-      data:{"param1":"cuantos"},
+      data:{"param1":"cuantos",id:parseInt(id)},
       type:"GET",
       dataType:"json",
       url:"funciones/inc/conexiones/conexion_reporte.php"
