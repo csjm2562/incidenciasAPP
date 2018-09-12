@@ -14,7 +14,7 @@
     var parametros = $(this).serialize();
     $.ajax({
       type: "POST",
-      url: "funciones/inc/conexiones/conexion_modificar_empleado_cliente.php",
+      url: "funciones/inc/conexiones/conexion_modificar_empleado_cliente_leer.php",
       data: parametros,
       success: function(data) {
         $('#contenido2').html(data);
