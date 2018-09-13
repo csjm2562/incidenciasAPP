@@ -1,32 +1,48 @@
 <?php
-  require 'funciones/conexion.php';
-  require 'funciones/funciones.php';
-  session_start();
-  if(isset($_SESSION["id_usuario"])){
-    header("Location: principal.php");
-  }
-	if(!empty($_POST)){
-		$correoU = $mysqli->real_escape_string($_POST['correoU']);
-		if(emailExiste($correoU)){
-      $user_id = getValor('id', 'correo', $correoU);
-			$nombre = getValor('nombre', 'correo', $correoU);
-			$token = generaTokenPass($user_id);
-
-			$url = 'http://'.$_SERVER["SERVER_NAME"].'/login2/cambiaClave.php?user_id='.$user_id.'&token='.$token; //Modificar
-
-			$asunto = 'Recuperar Contraseña';
-			$cuerpo = "Hola $nombre: <br><br>Se ha solicitado un reinicio de contraseña.
-                 <br><br>Para restaurar la contraseña, visita la siguiente dirección:
-                 <a href='$url'>$url</a>";
-      if(enviarEmail($correoU, $nombre, $asunto, $cuerpo)){
-        echo "Hemos enviado un correo electronico a las direcion $correoU para restablecer tu password.<br />";
-        echo "<a href='index.php' >Iniciar Sesion</a>";
-        exit;
+  $connection = mysqli_connect("localhost","johan","root","incidenciasapp"); //MODIFICAR
+  if(isset($_POST) & !empty($_POST)){
+    $correoU = $_POST['correoU'];
+    $pass = rand(999, 99999);
+	$newpass = password_hash($pass, PASSWORD_DEFAULT);
+    $sql = "SELECT * FROM `usuario` WHERE ";
+      if(filter_var($correoU, FILTER_VALIDATE_EMAIL)){
+        $sql .= "correo='$correoU'";
+      }else{
+        $sql .= "nombre_usuario='$correoU'";
       }
-		} else {
-			$ccorreo_error = "La direccion de correo electronico no existe";
-		}
-	}
+    $res = mysqli_query($connection, $sql);
+    $count = mysqli_num_rows($res);
+    if($count == 1){
+      $r = mysqli_fetch_assoc($res);
+	  $nombre_usuario = $r['nombre_usuario'];
+      $usql = "UPDATE usuario SET password='$newpass' WHERE nombre_usuario='$nombre_usuario'";
+      $result = mysqli_query($connection, $usql);
+      if($result){
+        require 'PHPMailer/PHPMailerAutoload.php';
+        $mail = new PHPMailer;
+		$mail->isSMTP();
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = ' '; //Modificar
+		$mail->Host = ' '; //Modificar
+		$mail->Port = 0; //Modificar
+		$mail->Username = ' '; //Modificar
+		$mail->Password = ' '; //Modificar
+		$mail->setFrom('correo', 'asunto'); //Modificar
+		$mail->addAddress($correoU, $nombre_usuario);
+        $mail->Subject = 'Nueva contraseña';
+        $mail->Body    = "Tu nueva contraseña es $pass";
+		$mail->IsHTML(true);
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+      }else{
+        echo "failed to updated password";
+      }
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,6 +73,7 @@
               </div>
             </center>
           </div>
+		</form>
           <div class="opcion">
             <div class="row">
               <div class="col s6">
@@ -67,8 +84,7 @@
               </div>
             </div>
           </div>
-        </form>
-
+        
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>

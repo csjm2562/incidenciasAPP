@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2018 a las 06:50:17
+-- Tiempo de generación: 13-09-2018 a las 08:12:53
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -60,22 +60,25 @@ CREATE TABLE `incidencia` (
 
 INSERT INTO `incidencia` (`id_incidencia`, `id_producto`, `id_cliente`, `id_empleado`, `estado_actual`, `historico_estado`, `hora_estado`, `url_video`, `hora_estado_actual`, `peticion_servicio`, `localizacion`, `comentarios`) VALUES
 (1, 0, 0, 4, 2, '2~', '1536120444~', '1536098763_1536098823_5248631452', '1536120444', '0', '5248631452', ''),
-(2, 1, 1, 2, 1, '1~', '1536120975~', 'NULL', '1536120975', '0', 'NULL', 'pruebamodifica'),
+(2, 1, 3, 2, 1, '1~', '1536120975~', 'NULL', '1536120975', '0', 'NULL', 'pruebamodifica'),
 (3, 1, 1, 2, 2, '1~', '1536121004~', 'NULL', '1536121004', '1', 'NULL', 'Probando2'),
 (4, 1, 3, 4, 1, '1~', '1536121523~', 'NULL', '1536121523', '1', 'NULL', 'Prueba2'),
 (5, 1, 4, 2, 1, '1~', '1536122068~', 'NULL', '1536122068', '1', 'NULL', 'pruebaempleado'),
-(6, 0, 5, 4, 2, '2~', '1536122201~', '1536100486_1536100546_5246899', '1536122201', '0', '5246899', 'pruebaincidencia'),
+(6, 0, 3, 4, 2, '2~', '1536122201~', '1536100486_1536100546_5246899', '1536122201', '0', '5246899', 'pruebaincidencia'),
 (7, 1, 5, 4, 2, '1~', '1536122304~', 'NULL', '1536122304', '1', 'NULL', 'altapeticioncliente'),
-(8, 1, 5, 0, 1, '1~', '1536122322~', 'NULL', '1536122322', '0', 'NULL', 'altaincidenciacliente'),
+(8, 1, 5, 2, 2, '1~', '1536122322~', 'NULL', '1536122322', '0', 'NULL', 'altaincidenciacliente'),
 (9, 1, 1, 0, 1, '1~', '1536122347~', 'NULL', '1536122347', '1', 'NULL', 'petadm'),
-(10, 1, 1, 2, 2, '1~', '1536122356~', 'NULL', '1536122356', '0', 'NULL', 'este comentario puede ser muy largo, por ello la tabla debe truncar la información para que se muestre bien y se mantenga en armonía con el diseño de toda la web.'),
+(10, 1, 1, 0, 2, '1~', '1536122356~', 'NULL', '1536122356', '0', 'NULL', 'este comentario puede ser muy largo, por ello la tabla debe truncar la información para que se muestre bien y se mantenga en armonía con el diseño de toda la web.'),
 (11, 1, 2, 0, 1, '1~', '1536376626~', 'NULL', '1536376626', '1', 'NULL', 'as'),
 (12, 1, 2, NULL, 1, '1~', '1536553391~', '', '1536553391', '1', NULL, 'prueba insercion NULL'),
-(13, NULL, 3, 2, 2, '2~', '1536553550~', '1536575055_1536575115_5', '1536553550', '0', '5', 'pruebaactualizanull'),
-(14, NULL, 3, 2, 2, '2~', '1536553777~', '1536575055_1536575115_5', '1536553777', '0', '5', 'pruebaidcliente'),
-(15, NULL, 5, 2, 2, '2~', '1536553785~', '1536575055_1536575115_5', '1536553785', '0', '5', 'pruebaidcliente'),
+(13, NULL, 3, 0, 2, '2~', '1536553550~', '1536575055_1536575115_5', '1536553550', '0', '5', 'pruebaactualizanull'),
+(14, NULL, 3, 0, 2, '2~', '1536553777~', '1536575055_1536575115_5', '1536553777', '0', '5', 'pruebaidcliente'),
+(15, NULL, 5, 4, 2, '2~', '1536553785~', '1536575055_1536575115_5', '1536553785', '0', '5', 'pruebaidcliente'),
 (16, NULL, 3, 2, 2, '2~', '1536554964~', '1536576382_1536576442_3', '1536554964', '0', '3', 'prueba url null'),
-(17, 1, 2, NULL, 1, '1~', '1536554986~', NULL, '1536554986', '1', NULL, 'prueba url null');
+(17, 1, 2, NULL, 1, '1~', '1536554986~', NULL, '1536554986', '1', NULL, 'prueba url null'),
+(18, 1, 2, NULL, 1, '1~', '1536650492~', NULL, '1536650492', '1', NULL, 'comentariosdepruebas'),
+(19, 1, 2, NULL, 1, '1~', '1536650568~', NULL, '1536650568', '1', NULL, 'comentariosdepruebas2'),
+(20, 1, 2, NULL, 1, '1~', '1536650612~', NULL, '1536650612', '1', NULL, 'comentariosdepruebas23');
 
 -- --------------------------------------------------------
 
@@ -145,7 +148,9 @@ INSERT INTO `producto_usuario` (`producto_id`, `usuario_id`) VALUES
 (1, 3),
 (2, 3),
 (3, 3),
-(15, 3),
+(12, 3),
+(13, 3),
+(14, 3),
 (25, 3);
 
 -- --------------------------------------------------------
@@ -160,6 +165,17 @@ CREATE TABLE `reporte` (
   `tipo_reporte` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `reporte`
+--
+
+INSERT INTO `reporte` (`id_reporte`, `id_cliente`, `tipo_reporte`, `fecha`) VALUES
+(1, '11', 1, '2018-09-04'),
+(2, '11', 1, '2018-09-04'),
+(3, '11', 1, '2018-09-04'),
+(4, '11', 1, '2018-09-04'),
+(5, '11', 1, '2018-09-04');
 
 -- --------------------------------------------------------
 
@@ -203,7 +219,7 @@ CREATE TABLE `usuario` (
   `id_tipo` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
   `nombre_usuario` varchar(30) NOT NULL,
-  `password` varchar(130) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(80) NOT NULL,
   `correo` varchar(80) NOT NULL,
@@ -215,7 +231,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `id_tipo`, `id_producto`, `nombre_usuario`, `password`, `nombre`, `apellido`, `correo`, `activacion`) VALUES
-(1, 1, 1, 'jsolano', '$2y$10$/tzwk26x2ls.Sp0MKVDS.u9SMZ3xBgWmRhi8c.V0gO218HKPt7i3O', 'Johan', 'Solano', 'johansolano@gmail.com', 1),
+(1, 1, 1, 'jsolano', '$2y$10$Cx82zyxH.UQiUGvKudpP2O362POv.Mn6spBIivphyyfST0unGW7RK', 'Johan', 'Solano', 'jmsolanoc@gmail.com', 1),
 (2, 2, 1, 'mcontreras', '$2y$10$8gGaRKR3wj9dLA94bbWl8uBU/oAQg2o.wIpIh2AJuHb2lD9tdtl.6', 'Micael', 'Contreras', 'micaelcontreras@gmail.com', 1),
 (3, 3, 1, 'midrogo', '$2y$10$J3wkDm4TxsmLJwKDOQ2f7eGWAwoSyOhZo.HcPPtgwrtYewjsKVNdq', 'Mary', 'Idrogo', 'maryidrogo@gmail.com', 1),
 (4, 2, 1, 'pmarchan', '$2y$10$XqSOWVcgXQSlY0wqoLVeJ.pjxwsqv0q0gTfAZd8wN8/2Hu.OcTbQ6', 'Pedro', 'Marchan', 'pedromarchan@gmail.com', 1),
@@ -285,7 +301,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `incidencia`
 --
 ALTER TABLE `incidencia`
-  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_incidencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -297,7 +313,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `reporte`
 --
 ALTER TABLE `reporte`
-  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_reporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
