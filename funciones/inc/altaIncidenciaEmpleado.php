@@ -1,6 +1,3 @@
-<?php
-echo "".strtotime("selec_hasta");
- ?>
 <form role="form" id="alta_incidencia_empleado" name="alta_incidencia_empleado" method="post">
   <div class="row">
     <div class="input-field col s6">
@@ -15,17 +12,17 @@ echo "".strtotime("selec_hasta");
     </div>
     <div class="input-field col s6">
       <select name="cliente" id="cliente">
-        <option value="" disabled selected>Seleccione clientes</option>
+        <option value="" disabled selected>Clientes</option>
       </select>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s3">
-      <input type="time" name="selec_desde" value="<?php date_default_timezone_set("America/Caracas"); echo date("h:i:s", strtotime("- 1 minute"));?>">
+      <input type="time" step="1" name="selec_desde" value="<?php date_default_timezone_set('America/Caracas'); echo date('h:i:s', strtotime('-1 minute'));?>">
       <label class="active" for="selec_desde">Desde</label>
     </div>
     <div class="input-field col s3">
-      <input type="time" name="selec_hasta" value="<?php date_default_timezone_set("America/Caracas"); echo date("h:i:s");?>">
+      <input type="time" step="1" name="selec_hasta" value="<?php date_default_timezone_set('America/Caracas'); echo date('h:i:s');?>">
       <label class="active" for="selec_hasta">Hasta</label>
     </div>
     <div class="input-field col s6">
@@ -34,7 +31,7 @@ echo "".strtotime("selec_hasta");
     </div>
   </div>
   <div class="input-field col s12">
-    <textarea class="materialize-textarea" name="comentario" required></textarea>
+    <textarea class="materialize-textarea" name="comentario"></textarea>
     <label for="comentario">Comentarios</label>
   </div><br>
   <center>
@@ -46,7 +43,6 @@ echo "".strtotime("selec_hasta");
 <div id="resultados"></div>
 <script>
   $(document).ready(function(){
-    $('input#localizacion').characterCounter();
     $('select').formSelect();
     $('.datepicker').datepicker({
       format: 'dd-mm-yyyy',
@@ -56,12 +52,6 @@ echo "".strtotime("selec_hasta");
         weekdays: ["Domingo","Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
         weekdaysShort: ["Dom","Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
         weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"],
-        cancel: 'Cancelar'
-      }
-    });
-    $('.timepicker').timepicker({
-      i18n: {
-        done: 'OK',
         cancel: 'Cancelar'
       }
     });

@@ -17,8 +17,8 @@
       mysqli_free_result( $resultado );
       mysqli_close( $con );
       echo '<b>Localización: </b>'.$fila['localizacion'];
-      echo '<div class="video-container">'.$fila['url_video'].'</div>';
-      echo '<b>Comentarios: </b>'.$fila['comentarios'];
+      echo '<br><b>Comentarios: </b>'.$fila['comentarios'];
+      echo '<br><video class="responsive-video" controls><source src="'."media/".$fila['url_video'].'"></video>';
     } else {
       echo "El ID: ".$incidencia." no está asociado a tu cuenta. \nIntenta con otro.";
     }

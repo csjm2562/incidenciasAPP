@@ -14,6 +14,11 @@ $(document).ready(function() {
     $("#contenido").load('funciones/inc/altaIncidenciaAdministrador.php');
       return false;
   });
+  $('.altIncCli').on('click', function() {
+    $('.navega li').removeClass('active');
+    $("#contenido").load('funciones/inc/altaIncidenciaCliente.php');
+      return false;
+  });
   $('.altIncEmp').on('click', function() {
     $('.navega li').removeClass('active');
     $("#contenido").load('funciones/inc/altaIncidenciaEmpleado.php');

@@ -16,10 +16,6 @@
       $flag = true;
 			$cpassword_error = "Las contraseñas no coinciden.";
 		}
-		if(usuarioExiste($nombreU)){
-      $flag = true;
-			$cusuario_error = "El nombre de usuario $nombreU ya existe.";
-		}
     if(!$flag){
       $pass_hash = hashPassword($claveU);
       $registro = registraUsuario($nombreU, $pass_hash, $nombre, $apellido, $correoU, $activo, $tipoU, $idProducto);
@@ -44,9 +40,9 @@
               <img src="media/img_logo2.png" alt="avatar" class="avatar">
   					</div>
             <div class="input-field" style="margin-bottom: 25px;">
-              <input class="validate" type="text" name="nombreU" required autocomplete="username">
+              <input class="validate" type="text" name="nombreU" id="nombreU" required autocomplete="username" value="<?php if(isset($nombreU) & !empty($nombreU)){ echo $nombreU; } ?>">
               <label for="nombreU">Ingrese nombre de usuario</label>
-              <span class="helper-text red-text"><?php if (isset($cusuario_error)) echo $cusuario_error; ?></span>
+              <span class="helper-text" id="resultado"></span>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="text" name="nombre" required pattern="[A-Za-z ]+" autocomplete="given-name">
@@ -101,7 +97,20 @@
     $(document).ready(function(){
       $('.modal').modal();
       $('.modal').modal('open');
+      $('#nombreU').keyup(function(){
+        $.post("funciones/check.php", {
+          nombreU: $('#nombreU').val()
+        }, function(response){
+          $('#resultado').fadeOut();
+          setTimeout("finishAjax('resultado', '"+escape(response)+"')", 400);
+        });
+      	return false;
+  	});
     });
+    function finishAjax(id, response) {
+      $('#'+id).html(unescape(response));
+      $('#'+id).fadeIn();
+    }
   </script>
   </body>
 </html>

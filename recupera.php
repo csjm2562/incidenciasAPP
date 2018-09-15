@@ -3,7 +3,7 @@
   if(isset($_POST) & !empty($_POST)){
     $correoU = $_POST['correoU'];
     $pass = rand(999, 99999);
-	$newpass = password_hash($pass, PASSWORD_DEFAULT);
+	  $newpass = password_hash($pass, PASSWORD_DEFAULT);
     $sql = "SELECT * FROM `usuario` WHERE ";
       if(filter_var($correoU, FILTER_VALIDATE_EMAIL)){
         $sql .= "correo='$correoU'";
@@ -33,13 +33,13 @@
         $mail->Body    = "Tu nueva contraseña es $pass";
 		$mail->IsHTML(true);
         if(!$mail->send()) {
-            echo 'Message could not be sent.';
+            echo 'El correo no pudo ser enviado.';
             echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            echo 'Un mensaje fué enviado a '.$correoU;
         }
       }else{
-        echo "failed to updated password";
+        echo "Falló al actualizar la contraseña.";
       }
     }
   }
@@ -84,7 +84,7 @@
               </div>
             </div>
           </div>
-        
+
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
