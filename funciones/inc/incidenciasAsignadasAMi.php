@@ -85,7 +85,7 @@
           "<td class='center'>"+elem.id_incidencia+"</td>"+
   				"<td class='center'>"+elem.estado_actual+"</td>"+
   				"<td>"+elem.url_video+"</td>"+
-  				"<td>"+elem.comentarios+"</td>"+
+  				"<td><div class='tabla'>"+elem.comentarios+"</div></td>"+
   				"<td>"+elem.localizacion+"</td>"+
   				"</tr>").appendTo($("#tablaIncidencia"));
   		});

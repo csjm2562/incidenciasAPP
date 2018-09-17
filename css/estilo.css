@@ -33,3 +33,15 @@ body {
   margin: auto;
   width: 90%;
 }
+
+.tabla {
+  width:200px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
+}
+.tabla:hover {
+  width: auto;
+  white-space: initial;
+  overflow:visible;
+}
