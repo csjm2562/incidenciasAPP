@@ -1,3 +1,9 @@
+(function($){
+  $(function(){
+    $('.sidenav').sidenav();
+    $('.dropdown-trigger').dropdown();
+  });
+})(jQuery);
 $(document).ready(function() {
   $('.altCli').on('click', function() {
     $('.navega li').removeClass('active');

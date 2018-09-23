@@ -24,8 +24,62 @@
         <div class="nav-wrapper teal">
           <a href="principal.php" class="brand-logo">Logotipo</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <?php
+              $producto = obtener_productos();
+              $obtPro = obtener_productos_para_marcar($_SESSION['id_usuario']);
+              if(count($producto)>0):
+                foreach($producto as $d):
+                  $encontrado = false;
+                  foreach($obtPro as $pc) {
+                    if($pc->producto_id==$d->id_producto) {
+                      $encontrado = true;
+                      break;
+                    }
+                  }
+                  if($encontrado) {
+                    echo "<li><a class='dropdown-trigger' href='#' data-target='dropdown1'>$d->descripcion</a></li>";
+                    echo "<ul id='dropdown1' class='dropdown-content'>
+                            <li><a class='subheader'>Reportes</a></li>
+                            <li class='divider'></li>
+                            <li><a href='#'>Reporte 1</a></li>
+                            <li><a href='#'>Reporte 2</a></li>
+                        </ul>";
+                  }
+                endforeach;
+              endif;
+            ?>
             <li><a href="cierra.php" title="Cerrar sesión"><i class="fas fa-power-off"></i></a></li>
           </ul>
+
+          <ul id="slide-out" class="sidenav">
+            <?php
+              $producto = obtener_productos();
+              $obtPro = obtener_productos_para_marcar($_SESSION['id_usuario']);
+              if(count($producto)>0):
+                foreach($producto as $d):
+                  $encontrado = false;
+                  foreach($obtPro as $pc) {
+                    if($pc->producto_id==$d->id_producto) {
+                      $encontrado = true;
+                      break;
+                    }
+                  }
+                  if($encontrado) {
+                    echo "<li><a class='dropdown-trigger' href='#' data-target='dropdown2'>$d->descripcion</a></li>";
+                    echo "<ul id='dropdown2' class='dropdown-content'>
+                            <li><a class='subheader'>Reportes</a></li>
+                            <li class='divider' tabindex='-1'></li>
+                            <li><a href='#'>Reporte 1</a></li>
+                            <li><a href='#'>Reporte 2</a></li>
+                        </ul>";
+                  }
+                endforeach;
+              endif;
+            ?>
+            <li><div class="divider"></div></li>
+            <li><a href="cierra.php" title="Cerrar sesión"><i class="fas fa-power-off"></i>Cerrar sesión</a></li>
+          </ul>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
         </div>
       </nav>
       <div class="row">

@@ -10,12 +10,16 @@
 		$conClaveU = $mysqli->real_escape_string($_POST['conClaveU']);
     $correoU = $mysqli->real_escape_string($_POST['correoU']);
 		$activo = 1; //MODIFICAR; 0-Inactivo, 1-Activo
-		$tipoU = 2; //MODIFICAR; 1-Administrador, 2-Empleado, 3-Cliente
+		$tipoU = 3; //MODIFICAR; 1-Administrador, 2-Empleado, 3-Cliente
     $idProducto = 1;
 		if(!validaPassword($claveU, $conClaveU)){
       $flag = true;
 			$cpassword_error = "Las contraseñas no coinciden.";
 		}
+    if(usuarioExiste($nombreU)){
+      $flag = true;
+      $cusuario_error = "El nombre de usuario $nombreU ya existe.";
+    }
     if(!$flag){
       $pass_hash = hashPassword($claveU);
       $registro = registraUsuario($nombreU, $pass_hash, $nombre, $apellido, $correoU, $activo, $tipoU, $idProducto);
@@ -42,7 +46,7 @@
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="text" name="nombreU" id="nombreU" required autocomplete="username" value="<?php if(isset($nombreU) & !empty($nombreU)){ echo $nombreU; } ?>">
               <label for="nombreU">Ingrese nombre de usuario</label>
-              <span class="helper-text" id="resultado"></span>
+              <span class="helper-text" id="resultado"><?php if (isset($cusuario_error)) echo $cusuario_error; ?></span>
             </div>
             <div class="input-field" style="margin-bottom: 25px;">
               <input class="validate" type="text" name="nombre" required pattern="[A-Za-z ]+" autocomplete="given-name">
