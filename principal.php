@@ -28,6 +28,7 @@
               $producto = obtener_productos();
               $obtPro = obtener_productos_para_marcar($_SESSION['id_usuario']);
               if(count($producto)>0):
+                echo "<ul id='dropdown1' class='dropdown-content'>";
                 foreach($producto as $d):
                   $encontrado = false;
                   foreach($obtPro as $pc) {
@@ -37,25 +38,30 @@
                     }
                   }
                   if($encontrado) {
-                    echo "<li><a class='dropdown-trigger' href='#' data-target='dropdown1'>$d->descripcion</a></li>";
-                    echo "<ul id='dropdown1' class='dropdown-content'>
-                            <li><a class='subheader'>Reportes</a></li>
-                            <li class='divider'></li>
-                            <li><a href='#'>Reporte 1</a></li>
-                            <li><a href='#'>Reporte 2</a></li>
-                        </ul>";
+                    echo "<li><a href='#'>$d->descripcion</a></li>";
                   }
                 endforeach;
+                echo "</ul>";
               endif;
             ?>
+            <ul id='dropdown2' class='dropdown-content'>
+              <li><a href='#'>Reporte 1</a></li>
+              <li><a href='#'>Reporte 2</a></li>
+            </ul>
+            <li><a class='dropdown-trigger' href='#' data-target='dropdown1'>Productos</a></li>
+            <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Reportes</a></li>
             <li><a href="cierra.php" title="Cerrar sesión"><i class="fas fa-power-off"></i></a></li>
           </ul>
 
-          <ul id="slide-out" class="sidenav">
+          <ul id="slide-out" class="sidenav collapsible">
             <?php
               $producto = obtener_productos();
               $obtPro = obtener_productos_para_marcar($_SESSION['id_usuario']);
               if(count($producto)>0):
+                echo "<li>
+                        <div class='collapsible-header black-text'>Productos</div>
+                        <div class='collapsible-body'>
+                          <ul>";
                 foreach($producto as $d):
                   $encontrado = false;
                   foreach($obtPro as $pc) {
@@ -65,17 +71,23 @@
                     }
                   }
                   if($encontrado) {
-                    echo "<li><a class='dropdown-trigger' href='#' data-target='dropdown2'>$d->descripcion</a></li>";
-                    echo "<ul id='dropdown2' class='dropdown-content'>
-                            <li><a class='subheader'>Reportes</a></li>
-                            <li class='divider' tabindex='-1'></li>
-                            <li><a href='#'>Reporte 1</a></li>
-                            <li><a href='#'>Reporte 2</a></li>
-                        </ul>";
+                    echo "<li><a href='#'>$d->descripcion</a></li>";
                   }
                 endforeach;
+                echo "</ul>
+                    </div>
+                  </li>";
               endif;
             ?>
+            <li>
+              <div class="collapsible-header black-text">Reportes</div>
+              <div class="collapsible-body">
+                <ul>
+                  <li><a href="#">Reporte 1</a></li>
+                  <li><a href="#">Reporte 2</a></li>
+                </ul>
+              </div>
+            </li>
             <li><div class="divider"></div></li>
             <li><a href="cierra.php" title="Cerrar sesión"><i class="fas fa-power-off"></i>Cerrar sesión</a></li>
           </ul>
