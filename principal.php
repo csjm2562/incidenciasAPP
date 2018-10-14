@@ -24,63 +24,26 @@
         <div class="nav-wrapper teal">
           <a href="principal.php" class="brand-logo">Logotipo</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <?php
-              $producto = obtener_productos();
-              $obtPro = obtener_productos_para_marcar($_SESSION['id_usuario']);
-              if(count($producto)>0):
-                echo "<ul id='dropdown1' class='dropdown-content'>";
-                foreach($producto as $d):
-                  $encontrado = false;
-                  foreach($obtPro as $pc) {
-                    if($pc->producto_id==$d->id_producto) {
-                      $encontrado = true;
-                      break;
-                    }
-                  }
-                  if($encontrado) {
-                    echo "<li><a href='#'>$d->descripcion</a></li>";
-                  }
-                endforeach;
-                echo "</ul>";
-              endif;
-            ?>
+            <ul id='dropdown1' class='dropdown-content'>
+              
+            </ul>
             <ul id='dropdown2' class='dropdown-content'>
               <li><a href='#'>Reporte 1</a></li>
               <li><a href='#'>Reporte 2</a></li>
             </ul>
-            <li><a class='dropdown-trigger' href='#' data-target='dropdown1'>Productos</a></li>
-            <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Reportes</a></li>
+            <li><a class='dropdown-trigger' href='#' data-target='dropdown1'>Producto 1</a></li>
+            <li><a class='dropdown-trigger' href='#' data-target='dropdown2'>Producto 2</a></li>
             <li><a href="cierra.php" title="Cerrar sesión"><i class="fas fa-power-off"></i></a></li>
           </ul>
 
           <ul id="slide-out" class="sidenav collapsible">
-            <?php
-              $producto = obtener_productos();
-              $obtPro = obtener_productos_para_marcar($_SESSION['id_usuario']);
-              if(count($producto)>0):
-                echo "<li>
-                        <div class='collapsible-header black-text'>Productos</div>
-                        <div class='collapsible-body'>
-                          <ul>";
-                foreach($producto as $d):
-                  $encontrado = false;
-                  foreach($obtPro as $pc) {
-                    if($pc->producto_id==$d->id_producto) {
-                      $encontrado = true;
-                      break;
-                    }
-                  }
-                  if($encontrado) {
-                    echo "<li><a href='#'>$d->descripcion</a></li>";
-                  }
-                endforeach;
-                echo "</ul>
-                    </div>
-                  </li>";
-              endif;
-            ?>
             <li>
-              <div class="collapsible-header black-text">Reportes</div>
+              <div class='collapsible-header black-text'>Producto 1</div>
+              <div class='collapsible-body'>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header black-text">Producto 2</div>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="#">Reporte 1</a></li>
